@@ -66,13 +66,13 @@ class RNNDrawer extends Component {
     // Animate side menu open
     Animated.timing(this.state.sideMenuOpenValue, {
       toValue: 0,
-      duration: 300
+      duration: this.props.animationOpenTime
     }).start();
 
     // Animate outside side menu opacity
     Animated.timing(this.state.sideMenuOverlayOpacity, {
       toValue: 0.7,
-      duration: 300
+      duration: this.props.animationOpenTime
     }).start();
   }
 
@@ -116,7 +116,7 @@ class RNNDrawer extends Component {
     // Animate side menu close
     Animated.timing(this.state.sideMenuOpenValue, {
       toValue: -drawerWidth,
-      duration: 300
+      duration: this.props.animationCloseTime
     }).start(() => {
       Navigation.dismissDrawer(this.props.componentId);
     });
@@ -124,14 +124,22 @@ class RNNDrawer extends Component {
     // Animate outside side menu opacity
     Animated.timing(this.state.sideMenuOverlayOpacity, {
       toValue: 0,
-      duration: 300
+      duration: this.props.animationCloseTime
     }).start();
   }
 }
 
+RNNDrawer.defaultProps = {
+  animationOpenTime: 300,
+  animationCloseTime: 300
+};
+
 RNNDrawer.propTypes = {
   /** react-native-navigation */
-  componentId: PropTypes.string.isRequired
+  componentId: PropTypes.string.isRequired,
+  /** Props */
+  animationOpenTime: PropTypes.number.isRequired,
+  animationCloseTime: PropTypes.number.isRequired
 };
 
 export default RNNDrawer;
