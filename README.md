@@ -41,7 +41,7 @@ Navigation.showDrawer({
       fadeOpacity: 0.6,
       drawerScreenWidth: 0.8,
       drawerScreenHeight: 1,
-      style: { // Styles the drawer, supports 
+      style: { // Styles the drawer, supports any react-native style
         backgroundColor: "red",
       }
     },
