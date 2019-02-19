@@ -68,4 +68,4 @@ You can then use a drawer by calling a custom method.
 ## Issues
 
 When using `Navigation.dismissDrawer` animation will not be triggered, the drawer will be hidden instantly.
-Resolving [3030](https://github.com/wix/react-native-navigation/issues/3030) should allow us to fix this.
+Resolving [#3030](https://github.com/wix/react-native-navigation/issues/3030) should allow us to fix this.
