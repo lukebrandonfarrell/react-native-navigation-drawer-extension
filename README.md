@@ -17,14 +17,11 @@ Install via npm:
 You need to register your drawer component with RNN. To do this use the register method and wrap your component in the RNNDrawer HOC. You also need to register the custom drawer methods.
 
 ```js
-   import { Navigation } from "react-native-navigation";
-   import { registerDrawerMethods, RNNDrawer } from "react-native-navigation-drawer-extension";
+  import { Navigation } from "react-native-navigation";
+  import { registerDrawerMethods, RNNDrawer } from "react-native-navigation-drawer-extension";
 
-  // register our drawer methods with RNN
-  registerDrawerMethods();
   // register our drawer component with RNN
   Navigation.registerComponent("CustomDrawer", () => RNNDrawer(CustomDrawer));
-  
 ```
 
 You can then use a drawer by calling a custom method.

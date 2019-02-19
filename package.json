@@ -1,6 +1,6 @@
 {
   "name": "react-native-navigation-drawer-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Drawer API build on top of wix react-native-navigation for iOS and Android.",
   "main": "index.js",
   "scripts": {
@@ -11,11 +11,15 @@
     "url": "git+https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer.git"
   },
   "keywords": [
+    "wix",
     "react-native-navigation",
     "navigation",
     "react-native",
     "drawer",
-    "side-menu"
+    "side-menu",
+    "ios",
+    "android",
+    "native"
   ],
   "peerDependencies": {
     "react-native-navigation": "2.x"
