@@ -1,7 +1,7 @@
 {
-  "name": "wix-react-native-navigation-drawer",
+  "name": "react-native-navigation-drawer-extension",
   "version": "1.0.0",
-  "description": "Drawer API build on top of wix react-native-navigation.",
+  "description": "Drawer API build on top of wix react-native-navigation for iOS and Android.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,8 +15,11 @@
     "navigation",
     "react-native",
     "drawer",
-    "side-menu"
+    "side-menu",
   ],
+  "peerDependencies": {
+    "react-native-navigation": "2.x"
+  },
   "author": "Luke Brandon Farrell",
   "license": "MIT",
   "bugs": {
