@@ -15,7 +15,7 @@
     "navigation",
     "react-native",
     "drawer",
-    "side-menu",
+    "side-menu"
   ],
   "peerDependencies": {
     "react-native-navigation": "2.x"
