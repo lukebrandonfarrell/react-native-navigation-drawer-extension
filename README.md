@@ -27,7 +27,9 @@ Navigation.registerComponent("CustomDrawer", () => RNNDrawer(CustomDrawer));
 You can then use the drawer by calling a custom method.
 
 ````js
-  // Show drawer
+import { Navigation } from "react-native-navigation";
+
+// Show drawer
 Navigation.showDrawer({
   component: {
     name: "CustomDrawer",
