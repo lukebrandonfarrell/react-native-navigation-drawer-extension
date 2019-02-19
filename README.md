@@ -14,40 +14,40 @@ Install via npm:
 
 ## Usage
 
-You need to register your drawer component with RNN. To do this use the register method and wrap your component in the RNNDrawer HOC. You also need to register the custom drawer methods.
+You need to register your drawer component with RNN. To do this use the register method and wrap your component in the RNNDrawer HOC.
 
 ```js
-  import { Navigation } from "react-native-navigation";
-  import { registerDrawerMethods, RNNDrawer } from "react-native-navigation-drawer-extension";
+import { Navigation } from "react-native-navigation";
+import { RNNDrawer } from "react-native-navigation-drawer-extension";
 
-  // register our drawer component with RNN
-  Navigation.registerComponent("CustomDrawer", () => RNNDrawer(CustomDrawer));
+// register our drawer component with RNN
+Navigation.registerComponent("CustomDrawer", () => RNNDrawer(CustomDrawer));
 ```
 
-You can then use a drawer by calling a custom method.
+You can then use the drawer by calling a custom method.
 
 ````js
   // Show drawer
-  Navigation.showDrawer({
-    component: {
-      name: "CustomDrawer",
-      passProps: {
-        animationOpenTime: 300,
-        animationCloseTime: 300,
-        direction: "left",
-        dismissWhenTouchOutside: true,
-        fadeOpacity: 0.6,
-        drawerScreenWidth: 0.8,
-        drawerScreenHeight: 1,
-        style: { // Styles the drawer, supports 
-          backgroundColor: "red",
-        }
-      },
-    }
-  });
+Navigation.showDrawer({
+  component: {
+    name: "CustomDrawer",
+    passProps: {
+      animationOpenTime: 300,
+      animationCloseTime: 300,
+      direction: "left",
+      dismissWhenTouchOutside: true,
+      fadeOpacity: 0.6,
+      drawerScreenWidth: 0.8,
+      drawerScreenHeight: 1,
+      style: { // Styles the drawer, supports 
+        backgroundColor: "red",
+      }
+    },
+  }
+});
 
-  // Dismiss drawer
-  Navigation.dismissDrawer(this.props.componentId);
+// Dismiss drawer
+Navigation.dismissDrawer(this.props.componentId);
 ````
 
 ## Props
