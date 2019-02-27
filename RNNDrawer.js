@@ -168,7 +168,7 @@ const RNNDrawer = Component => {
         toValue: closeValues[direction],
         duration: this.props.animationCloseTime
       }).start(() => {
-        Navigation.dismissModal(this.props.componentId);
+        Navigation.dismissOverlay(this.props.componentId);
       });
 
       // Animate outside side menu opacity

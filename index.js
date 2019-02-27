@@ -3,10 +3,10 @@ import { Navigation } from "react-native-navigation";
 /**
  * Shows a drawer component
  *
- * @param name
+ * @param options
  */
-Navigation.showDrawer = name => {
-  Navigation.showOverlay(name);
+Navigation.showDrawer = options => {
+  Navigation.showOverlay(options);
 };
 
 /**
