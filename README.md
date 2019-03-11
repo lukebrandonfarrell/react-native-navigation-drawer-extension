@@ -54,14 +54,28 @@ Navigation.showDrawer({
       drawerScreenHeight: 1,
       style: { // Styles the drawer, supports any react-native style
         backgroundColor: "red",
-      }
+      },
+      parentComponentId: this.props.componentId,
     },
   }
 });
+```
 
+```js
 // Dismiss drawer
 Navigation.dismissDrawer(this.props.componentId);
 ````
+
+To navigate from the drawer you must pass the parent `componentId` and use that to navigate. e.g:
+
+```js
+// From drawer component
+Navigation.push(parentComponentId, {
+  component: {
+    name: "CustomScreenFromDrawer",
+  },
+});
+```
 
 ## Props
 
