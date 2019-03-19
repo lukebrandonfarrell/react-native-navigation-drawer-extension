@@ -77,7 +77,7 @@ Navigation.push(parentComponentId, {
 });
 ```
 
-When using Navigation.dismissDrawer animation will not be triggered, the drawer will be hidden instantly. Resolving [#3030](https://github.com/wix/react-native-navigation/issues/3030) should allow us to fix this, but we have a workaround 🎉. Thanks to @shaiyosipof [https://github.com/shaiyosipof] for forking and fixing this. We pass a
+When using `Navigation.dismissDrawer` the animation will not be triggered, the drawer will be hidden instantly. Resolving [#3030](https://github.com/wix/react-native-navigation/issues/3030) should allow us to fix this, but we have a workaround 🎉. Thanks to @shaiyosipof [https://github.com/shaiyosipof] for forking and fixing this. We pass a
 `dismissDrawerWithAnimation` prop to each drawer component... so you can dismiss the drawer with animation from the drawer itself.
 
 ```js
@@ -97,9 +97,4 @@ this.props.dismissDrawerWithAnimation(); // This will dismiss the drawer with an
 | dismissWhenTouchOutside | bool      | Yes       | true    | Should the drawer be dismissed when a click is registered outside?                      |
 | fadeOpacity         | number        | Yes       | 0.6     | Opacity of the screen outside the drawer.                                               |
 | drawerScreenWidth   | number        | Yes       | 0.8     | 0 - 1, width of drawer in relation to the screen.                                       |
-| drawerScreenHeight  | number        | Yes       | 1       | 0 - 1, height of drawer in relation to the screen.                                      |                              
-
-## Issues
-
-When using `Navigation.dismissDrawer` animation will not be triggered, the drawer will be hidden instantly.
-Resolving [#3030](https://github.com/wix/react-native-navigation/issues/3030) should allow us to fix this.
+| drawerScreenHeight  | number        | Yes       | 1       | 0 - 1, height of drawer in relation to the screen.                                      |                         
