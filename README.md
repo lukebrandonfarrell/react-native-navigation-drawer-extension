@@ -77,6 +77,16 @@ Navigation.push(parentComponentId, {
 });
 ```
 
+When using Navigation.dismissDrawer animation will not be triggered, the drawer will be hidden instantly. Resolving [#3030](https://github.com/wix/react-native-navigation/issues/3030) should allow us to fix this, but we have a workaround 🎉. Thanks to @shaiyosipof [https://github.com/shaiyosipof] for forking and fixing this. We pass a
+`dismissDrawerWithAnimation` prop to each drawer component... so you can dismiss the drawer with animation from the drawer itself.
+
+```js
+// CustomDrawer.js
+
+this.props.dismissDrawerWithAnimation(); // This will dismiss the drawer with animation
+
+```
+
 ## Props
 
 | Prop                | Type          | Optional  | Default | Description                                                                             |

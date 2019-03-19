@@ -134,7 +134,7 @@ const RNNDrawer = Component => {
               }
             ]}
           >
-            <Component {...this.props} />
+            <Component {...this.props} dismissDrawerWithAnimation={this.dismissDrawerWithAnimation} />
           </Animated.View>
         </View>
       );
