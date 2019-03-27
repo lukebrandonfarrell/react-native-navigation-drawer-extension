@@ -1,4 +1,5 @@
 import { Navigation } from "react-native-navigation";
+import { state } from 'react-beep';
 
 /**
  * Shows a drawer component
@@ -7,6 +8,8 @@ import { Navigation } from "react-native-navigation";
  */
 Navigation.showDrawer = options => {
   Navigation.showOverlay(options);
+
+  state.open = true;
 };
 
 /**
@@ -17,6 +20,7 @@ Navigation.showDrawer = options => {
 Navigation.dismissDrawer = componentId => {
   Navigation.dismissOverlay(componentId);
 
+  state.open = false;
   /*
    * To run animation with dismiss overlay, we are
    * waiting for a solution to this issue:
@@ -32,3 +36,4 @@ Navigation.dismissDrawer = componentId => {
 };
 
 export RNNDrawer from "./RNNDrawer";
+export SideMenuView from "./SideMenuView";

@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer/issues"
   },
-  "homepage": "https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer#readme"
+  "homepage": "https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer#readme",
+  "dependencies": {
+    "react-beep": "^1.0.3"
+  }
 }

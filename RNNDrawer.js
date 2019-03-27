@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { Navigation } from "react-native-navigation";
+import { state } from 'react-beep';
 
 const RNNDrawer = Component => {
   class WrappedDrawer extends React.Component {
@@ -48,7 +49,7 @@ const RNNDrawer = Component => {
       /** Component Bindings */
       this.touchedOutside = this.touchedOutside.bind(this);
       this.dismissDrawerWithAnimation = this.dismissDrawerWithAnimation.bind(
-        this
+          this
       );
       Navigation.events().bindComponent(this);
     }
@@ -109,34 +110,34 @@ const RNNDrawer = Component => {
       const { sideMenuOpenValue, sideMenuOverlayOpacity } = this.state;
       /** Variables */
       const animatedValue =
-        direction === "left" || direction === "right"
-          ? { marginLeft: sideMenuOpenValue }
-          : { marginTop: sideMenuOpenValue };
+          direction === "left" || direction === "right"
+              ? { marginLeft: sideMenuOpenValue }
+              : { marginTop: sideMenuOpenValue };
 
       return (
-        <View style={sideMenuContainerStyle}>
-          <TouchableWithoutFeedback onPress={this.touchedOutside}>
+          <View style={sideMenuContainerStyle}>
+            <TouchableWithoutFeedback onPress={this.touchedOutside}>
+              <Animated.View
+                  style={[
+                    sideMenuOverlayStyle,
+                    { opacity: sideMenuOverlayOpacity }
+                  ]}
+              />
+            </TouchableWithoutFeedback>
             <Animated.View
-              style={[
-                sideMenuOverlayStyle,
-                { opacity: sideMenuOverlayOpacity }
-              ]}
-            />
-          </TouchableWithoutFeedback>
-          <Animated.View
-            style={[
-              { backgroundColor: "#FFF" },
-              style,
-              {
-                height: this.drawerHeight,
-                width: this.drawerWidth,
-                ...animatedValue
-              }
-            ]}
-          >
-            <Component {...this.props} dismissDrawerWithAnimation={this.dismissDrawerWithAnimation} />
-          </Animated.View>
-        </View>
+                style={[
+                  { backgroundColor: "#FFF" },
+                  style,
+                  {
+                    height: this.drawerHeight,
+                    width: this.drawerWidth,
+                    ...animatedValue
+                  }
+                ]}
+            >
+              <Component {...this.props} dismissDrawerWithAnimation={this.dismissDrawerWithAnimation} />
+            </Animated.View>
+          </View>
       );
     }
 
@@ -176,6 +177,8 @@ const RNNDrawer = Component => {
         toValue: 0,
         duration: this.props.animationCloseTime
       }).start();
+
+      state.open = false;
     }
   }
 
