@@ -135,8 +135,7 @@ class SideMenuView extends Component {
                   left: 0,
                   position: "absolute",
                   width: sideMargin || sideMarginLeft,
-                  height: screenHeight,
-                  backgroundColor: "black"
+                  height: screenHeight
                 }} {...this._leftPanResponder.panHandlers} />
             ) : null
           }
@@ -147,8 +146,7 @@ class SideMenuView extends Component {
                   position: "absolute",
                   right: 0,
                   width: sideMargin || sideMarginRight,
-                  height: screenHeight,
-                  backgroundColor: "blue"
+                  height: screenHeight
                 }} {...this._rightPanResponder.panHandlers} />
             ) : null
           }
