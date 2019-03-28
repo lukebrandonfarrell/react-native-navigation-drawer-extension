@@ -89,9 +89,9 @@ Navigation.push(parentComponentId, {
 | drawerScreenWidth   | number        | Yes       | 0.8     | 0 - 1, width of drawer in relation to the screen.                                       |
 | drawerScreenHeight  | number        | Yes       | 1       | 0 - 1, height of drawer in relation to the screen.                                      |                         
 
-## <SideMenuView />
+## SideMenuView
 
-<img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-navigation-drawer-extension/slide-drawer.gif" width="48%" />
+<img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-navigation-drawer-extension/slide-drawer.gif" width="30%" />
 
 The library also exposes a component which will allow you to open the drawer by either swiping the left or right gutter of the phone. This is achieved by using event listeners
 to communicate with the RNNDrawer HOC component. To enable this feature wrap your screen with the `SideMenuView` component. `<SideMenuView>` is just an enhanced `<View>` all props are passed down to `<View>`.
@@ -113,7 +113,7 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
   {...}
  </SideMenuView>
 
-```git commit -m "Added component to enable a swipeable gutter which opens the drawer"
+```
 
 #### Props
 
