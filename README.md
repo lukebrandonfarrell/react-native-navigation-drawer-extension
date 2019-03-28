@@ -113,7 +113,7 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
   {...}
  </SideMenuView>
 
-```git commit -m "Added component to enable a swipeable gutter which opens the drawer"
+```
 
 #### Props
 

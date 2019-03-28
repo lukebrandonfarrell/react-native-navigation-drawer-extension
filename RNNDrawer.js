@@ -14,7 +14,6 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { Navigation } from "react-native-navigation";
-import { Beep, state } from "react-beep";
 import { on, emit } from 'jetemit';
 
 const RNNDrawer = Component => {
