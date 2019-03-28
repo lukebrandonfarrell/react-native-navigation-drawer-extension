@@ -1,5 +1,5 @@
 import { Navigation } from "react-native-navigation";
-import { state } from 'react-beep';
+import { emit } from "jetemit";
 
 /**
  * Shows a drawer component
@@ -8,8 +8,6 @@ import { state } from 'react-beep';
  */
 Navigation.showDrawer = options => {
   Navigation.showOverlay(options);
-
-  state.open = true;
 };
 
 /**
@@ -17,22 +15,8 @@ Navigation.showDrawer = options => {
  *
  * @param componentId
  */
-Navigation.dismissDrawer = componentId => {
-  Navigation.dismissOverlay(componentId);
-
-  state.open = false;
-  /*
-   * To run animation with dismiss overlay, we are
-   * waiting for a solution to this issue:
-   *
-   * https://github.com/wix/react-native-navigation/issues/3030
-   */
-
-  // Navigation.mergeOptions(componentId, {
-  //   passProps: {
-  //     dismiss: true
-  //   }
-  // });
+Navigation.dismissDrawer = () => {
+  emit('DISMISS_DRAWER', true);
 };
 
 export RNNDrawer from "./RNNDrawer";

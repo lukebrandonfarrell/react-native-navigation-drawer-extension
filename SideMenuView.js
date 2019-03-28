@@ -6,11 +6,13 @@
 
 // /* NPM - Node Package Manage */
 import React, { Component } from 'react';
-import { View, PanResponder } from 'react-native';
-import { state, Beep } from 'react-beep';
+import { View, PanResponder,Dimensions } from 'react-native';
+import { on, emit } from 'jetemit';
 import PropTypes from 'prop-types';
 
-class SideMenuView extends Beep(['open']) {
+const screenHeight = Dimensions.get("screen").height;
+
+class SideMenuView extends Component {
   /**
    * [ Built-in React method. ]
    *
@@ -21,39 +23,89 @@ class SideMenuView extends Beep(['open']) {
   constructor(props) {
     super(props);
 
-    const { sideMargin, swipeSensitivity } = props;
+    this.isOpened = false;
 
-    this._panResponder = PanResponder.create({
+    const { swipeSensitivity, left, right } = props;
+
+    this._panResponderMethods = {
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+      onPanResponderGrant: (evt, gestureState) => {
+        emit('SWIPE_START');
+      },
+      onPanResponderRelease: (evt, gestureState) => {
+        const { vx } = gestureState;
 
+        // Emit this event when the gesture ends
+        emit('SWIPE_END', (vx > 0) ? "right" : "left");
+      },
+      onPanResponderTerminationRequest: (evt, gestureState) => false,
+      onShouldBlockNativeResponder: (evt, gestureState) => false,
+    };
+
+    // LEFT PAN RESPONDER
+    this._leftPanResponder = PanResponder.create({
+      ...this._panResponderMethods,
       onPanResponderMove: (evt, gestureState) => {
-        const { moveX, moveY, vx, vy } = gestureState;
+        const { moveX, vx } = gestureState;
 
-        // Left, Right
-        if(Math.abs(vx) > swipeSensitivity) {
-          if (moveX < (sideMargin || sideMarginLeft) && !state.open) {
-            if(this.props.left) this.props.left();
-          } else if (moveX < -(sideMargin || sideMarginRight) && !state.open) {
-            if(this.props.right) this.props.right();
-          }
-        }
+        // Emit this event on movement
+        emit('SWIPE_MOVE', { value: moveX, direction: "left" });
 
-        // Top, Down
-        if(Math.abs(vy) > swipeSensitivity) {
-          if (moveY < (sideMargin || sideMarginBottom) && !state.open) {
-            if(this.props.bottom) this.props.bottom();
-          } else if (moveY < -(sideMargin || sideMarginTop) && !state.open) {
-            if(this.props.top) this.props.top();
-          }
+        // Left Swipe
+        if(vx > swipeSensitivity && !this.isOpened && left) {
+          this.isOpened = true; left();
         }
       },
-      onPanResponderTerminationRequest: (evt, gestureState) => true,
-      onShouldBlockNativeResponder: (evt, gestureState) => true,
     });
+
+    // RIGHT PAN RESPONDER
+    this._rightPanResponder = PanResponder.create({
+      ...this._panResponderMethods,
+      onPanResponderMove: (evt, gestureState) => {
+        const { moveX, vx } = gestureState;
+
+        // Emit this event on movement
+        emit('SWIPE_MOVE', { value: moveX, direction: "right" });
+
+        // Right Swipe
+        if(vx > -swipeSensitivity && !this.isOpened && right) {
+          this.isOpened = true; right();
+        }
+      },
+    });
+
+    this.registerListeners = this.registerListeners.bind(this);
+    this.removeListeners = this.removeListeners.bind(this);
+  }
+
+  /**
+   * [ Built-in React method. ]
+   *
+   * Executed when the component is mounted to the screen
+   */
+  componentDidMount() {
+    this.registerListeners();
+  }
+
+  /**
+   * Registers all the listenrs for this component
+   */
+  registerListeners() {
+    // Event fires when drawer is closed
+    this.unsubscribeDrawerClosed = on('DRAWER_CLOSED', () => {
+      this.isOpened = false;
+    });
+  }
+
+  /**
+   * Removes all the listenrs from this component
+   */
+  removeListeners(){
+    this.unsubscribeDrawerClosed();
   }
 
   /**
@@ -62,32 +114,61 @@ class SideMenuView extends Beep(['open']) {
    * Allows us to render JSX to the screen
    */
   render(){
-    const { children, ...props } = this.props;
+    /** Props */
+    const {
+      children,
+      left,
+      right,
+      sideMargin,
+      sideMarginLeft,
+      sideMarginRight,
+      ...props
+    } = this.props;
 
     return (
-      <View {...this._panResponder.panHandlers} {...props}>
-        {children}
-      </View>
+        <View {...props}>
+          {children}
+
+          {
+            left ? (
+                <View style={{
+                  left: 0,
+                  position: "absolute",
+                  width: sideMargin || sideMarginLeft,
+                  height: screenHeight,
+                  backgroundColor: "black"
+                }} {...this._leftPanResponder.panHandlers} />
+            ) : null
+          }
+
+          {
+            right ? (
+                <View style={{
+                  position: "absolute",
+                  right: 0,
+                  width: sideMargin || sideMarginRight,
+                  height: screenHeight,
+                  backgroundColor: "blue"
+                }} {...this._rightPanResponder.panHandlers} />
+            ) : null
+          }
+        </View>
     )
   }
-}
+};
 
 SideMenuView.defaultProps = {
-  sideMargin: 75,
-  swipeSensitivity: 0.6
-};
+  sideMargin: 15,
+  swipeSensitivity: 0.2
+}
 
 SideMenuView.propTypes = {
   left: PropTypes.func,
   right: PropTypes.func,
-  bottom: PropTypes.func,
-  top: PropTypes.func,
   swipeSensitivity: PropTypes.number,
   sideMargin: PropTypes.number,
   sideMarginLeft: PropTypes.number,
-  sideMarginRight: PropTypes.number,
-  sideMarginTop: PropTypes.number,
-  sideMarginBottom: PropTypes.number,
+  sideMarginRight: PropTypes.number
 }
 
 export default SideMenuView;

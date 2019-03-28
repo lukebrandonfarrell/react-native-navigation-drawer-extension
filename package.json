@@ -1,6 +1,6 @@
 {
   "name": "react-native-navigation-drawer-extension",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Drawer API built on top of wix react-native-navigation for iOS and Android.",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,6 @@
   },
   "homepage": "https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer#readme",
   "dependencies": {
-    "react-beep": "^1.0.3"
+    "jetemit": "^3.3.0"
   }
 }
