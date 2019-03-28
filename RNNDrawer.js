@@ -14,6 +14,8 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { Navigation } from "react-native-navigation";
+import { Beep, state } from "react-beep";
+import { on, emit } from 'jetemit';
 
 const RNNDrawer = Component => {
   class WrappedDrawer extends React.Component {
@@ -27,10 +29,21 @@ const RNNDrawer = Component => {
     constructor(props) {
       super(props);
 
+      /** Props */
+      const { direction } = props;
+
+      /** Component Variables */
       this.screenWidth = Dimensions.get("window").width;
       this.screenHeight = Dimensions.get("window").height;
       this.drawerWidth = this.screenWidth * props.drawerScreenWidth;
       this.drawerHeight = this.screenHeight * props.drawerScreenHeight;
+
+      this.drawerOpenedValues = {
+        left: 0,
+        right: this.screenWidth - this.drawerWidth,
+        top: 0,
+        bottom: this.screenHeight - this.drawerHeight
+      };
 
       const initialValues = {
         left: -this.drawerWidth,
@@ -42,15 +55,42 @@ const RNNDrawer = Component => {
       /** Component State */
       this.state = {
         sideMenuOpenValue: new Animated.Value(initialValues[props.direction]),
-        sideMenuOverlayOpacity: new Animated.Value(0)
+        sideMenuOverlayOpacity: new Animated.Value(0),
+        sideMenuSwippingStarted: false,
+        sideMenuIsDismissing: false,
       };
 
       /** Component Bindings */
       this.touchedOutside = this.touchedOutside.bind(this);
       this.dismissDrawerWithAnimation = this.dismissDrawerWithAnimation.bind(
-        this
+          this
       );
+      this.registerListeners = this.registerListeners.bind(this);
+      this.removeListeners = this.removeListeners.bind(this);
       Navigation.events().bindComponent(this);
+    }
+
+
+    /**
+     * [ Built-in React method. ]
+     *
+     * Executed when the component is mounted to the screen
+     */
+    componentDidMount() {
+      /** Props */
+      const { direction, fadeOpacity } = this.props;
+
+      // Animate side menu open
+      this.animatedDrawer = Animated.timing(this.state.sideMenuOpenValue, {
+        toValue: this.drawerOpenedValues[direction],
+        duration: this.props.animationOpenTime
+      });
+
+      // Animate outside side menu opacity
+      this.animatedOpacity = Animated.timing(this.state.sideMenuOverlayOpacity, {
+        toValue: fadeOpacity,
+        duration: this.props.animationOpenTime
+      });
     }
 
     /**
@@ -74,25 +114,113 @@ const RNNDrawer = Component => {
      * Executed when the component is navigated to view.
      */
     componentDidAppear() {
+      this.registerListeners();
+
+      // If there has been no swipping, and this componnet appears, then just start the open animations
+      if(!this.state.sideMenuSwippingStarted){
+        this.animatedDrawer.start();
+        this.animatedOpacity.start();
+      }
+    }
+
+    /**
+     * [ react-native-navigation method. ]
+     *
+     * Executed when the component is navigated away from view.
+     */
+    componentDidDisappear() {
+      this.removeListeners();
+
+      emit('DRAWER_CLOSED');
+    }
+
+    /**
+     * Registers all the listenrs for this component
+     */
+    registerListeners(){
+      /** Props */
       const { direction, fadeOpacity } = this.props;
-      const openValues = {
-        left: 0,
-        right: this.screenWidth - this.drawerWidth,
-        top: 0,
-        bottom: this.screenHeight - this.drawerHeight
-      };
 
-      // Animate side menu open
-      Animated.timing(this.state.sideMenuOpenValue, {
-        toValue: openValues[direction],
-        duration: this.props.animationOpenTime
-      }).start();
+      // Executes when the side of the screen interaction starts
+      this.unsubscribeSwipeStart = on('SWIPE_START', () => {
+        this.setState({
+          sideMenuSwippingStarted: true
+        });
+      });
 
-      // Animate outside side menu opacity
-      Animated.timing(this.state.sideMenuOverlayOpacity, {
-        toValue: fadeOpacity,
-        duration: this.props.animationOpenTime
-      }).start();
+      // Executes when the side of the screen is interacted with
+      this.unsubscribeSwipeMove = on('SWIPE_MOVE', ({ value, direction: swipeDirection }) => {
+        if(swipeDirection === "left"){
+          // Calculates the position of the drawer from the left side of the screen
+          const alignedMovementValue = value - this.drawerWidth;
+          // Calculates the percetage 0 - 100 of which the drawer is open
+          const openedPercentage = Math.abs(((Math.abs(alignedMovementValue) / this.drawerWidth) * 100) - 100);
+          // Calculates the opacity to set of the screen based on the percentage the drawer is open
+          const normalizedOpacity = Math.min(openedPercentage / 100, fadeOpacity);
+
+          // Does allow the drawer to go further than the maximum width
+          if(this.drawerOpenedValues[direction] > alignedMovementValue) {
+            // Sets the animation values, we use this so we can resume animation from any point
+            this.state.sideMenuOpenValue.setValue(alignedMovementValue);
+            this.state.sideMenuOverlayOpacity.setValue(normalizedOpacity);
+          }
+        } else if(swipeDirection === "right"){
+          // Works out the distance from right of screen to the finger position
+          const normalizedValue = this.screenWidth - value;
+          // Calculates the position of the drawer from the left side of the screen
+          const alignedMovementValue = this.screenWidth - normalizedValue;
+          // Calculates the percetage 0 - 100 of which the drawer is open
+          console.log({normalizedValue, alignedMovementValue});
+          const openedPercentage = Math.abs(((Math.abs(normalizedValue) / this.drawerWidth) * 100));
+          // Calculates the opacity to set of the screen based on the percentage the drawer is open
+          const normalizedOpacity = Math.min(openedPercentage / 100, fadeOpacity);
+
+          // Does allow the drawer to go further than the maximum width
+          if(this.drawerOpenedValues[direction] < alignedMovementValue) {
+            // Sets the animation values, we use this so we can resume animation from any point
+            this.state.sideMenuOpenValue.setValue(alignedMovementValue);
+            this.state.sideMenuOverlayOpacity.setValue(normalizedOpacity);
+          }
+        }
+      });
+
+      // Executes when the side of the screen interaction ends
+      this.unsubscribeSwipeEnd = on('SWIPE_END', (swipeDirection) => {
+        const reverseDirection = {
+          right: "left",
+          left: "right"
+        };
+
+        if(swipeDirection === reverseDirection[direction]) {
+          this.animatedDrawer.start();
+          this.animatedOpacity.start();
+        } else {
+          if(!this.state.sideMenuIsDismissing) {
+            this.setState({
+              sideMenuIsDismissing: true
+            }, () => {
+              this.dismissDrawerWithAnimation();
+            });
+          }
+        }
+      });
+
+      // Executes when the drawer needs to be dismissed
+      this.unsubscribeDismissDrawer = on('DISMISS_DRAWER', () => {
+        if(!this.state.sideMenuIsDismissing) {
+          this.dismissDrawerWithAnimation();
+        }
+      });
+    }
+
+    /**
+     * Removes all the listenrs from this component
+     */
+    removeListeners(){
+      this.unsubscribeSwipeStart();
+      this.unsubscribeSwipeMove();
+      this.unsubscribeSwipeEnd();
+      this.unsubscribeDismissDrawer();
     }
 
     /**
@@ -109,34 +237,34 @@ const RNNDrawer = Component => {
       const { sideMenuOpenValue, sideMenuOverlayOpacity } = this.state;
       /** Variables */
       const animatedValue =
-        direction === "left" || direction === "right"
-          ? { marginLeft: sideMenuOpenValue }
-          : { marginTop: sideMenuOpenValue };
+          direction === "left" || direction === "right"
+              ? { marginLeft: sideMenuOpenValue }
+              : { marginTop: sideMenuOpenValue };
 
       return (
-        <View style={sideMenuContainerStyle}>
-          <TouchableWithoutFeedback onPress={this.touchedOutside}>
+          <View style={sideMenuContainerStyle}>
+            <TouchableWithoutFeedback onPress={this.touchedOutside}>
+              <Animated.View
+                  style={[
+                    sideMenuOverlayStyle,
+                    { opacity: sideMenuOverlayOpacity }
+                  ]}
+              />
+            </TouchableWithoutFeedback>
             <Animated.View
-              style={[
-                sideMenuOverlayStyle,
-                { opacity: sideMenuOverlayOpacity }
-              ]}
-            />
-          </TouchableWithoutFeedback>
-          <Animated.View
-            style={[
-              { backgroundColor: "#FFF" },
-              style,
-              {
-                height: this.drawerHeight,
-                width: this.drawerWidth,
-                ...animatedValue
-              }
-            ]}
-          >
-            <Component {...this.props} dismissDrawerWithAnimation={this.dismissDrawerWithAnimation} />
-          </Animated.View>
-        </View>
+                style={[
+                  { backgroundColor: "#FFF" },
+                  style,
+                  {
+                    height: this.drawerHeight,
+                    width: this.drawerWidth,
+                    ...animatedValue
+                  }
+                ]}
+            >
+              <Component {...this.props} />
+            </Animated.View>
+          </View>
       );
     }
 
@@ -156,6 +284,7 @@ const RNNDrawer = Component => {
      */
     dismissDrawerWithAnimation() {
       const { direction } = this.props;
+      const { sideMenuIsDismissing } = this.state;
       const closeValues = {
         left: -this.drawerWidth,
         right: this.screenWidth,
@@ -169,6 +298,7 @@ const RNNDrawer = Component => {
         duration: this.props.animationCloseTime
       }).start(() => {
         Navigation.dismissOverlay(this.props.componentId);
+        this.setState({ sideMenuIsDismissing: false });
       });
 
       // Animate outside side menu opacity

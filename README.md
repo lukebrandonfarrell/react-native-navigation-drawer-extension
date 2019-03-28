@@ -63,7 +63,7 @@ Navigation.showDrawer({
 
 ```js
 // Dismiss drawer
-Navigation.dismissDrawer(this.props.componentId);
+Navigation.dismissDrawer(); // Now works with Animation!
 ````
 
 To navigate from the drawer you must pass the parent `componentId` and use that to navigate. e.g:
@@ -77,17 +77,7 @@ Navigation.push(parentComponentId, {
 });
 ```
 
-When using `Navigation.dismissDrawer` the animation will not be triggered, the drawer will be hidden instantly. Resolving [#3030](https://github.com/wix/react-native-navigation/issues/3030) should allow us to fix this, but we have a workaround 🎉. Thanks to @shaiyosipof [https://github.com/shaiyosipof] for forking and fixing this. We pass a
-`dismissDrawerWithAnimation` prop to each drawer component... so you can dismiss the drawer with animation from the drawer itself.
-
-```js
-// CustomDrawer.js
-
-this.props.dismissDrawerWithAnimation(); // This will dismiss the drawer with animation
-
-```
-
-## Props
+#### Props
 
 | Prop                | Type          | Optional  | Default | Description                                                                             |
 | ------------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------- |
@@ -98,3 +88,40 @@ this.props.dismissDrawerWithAnimation(); // This will dismiss the drawer with an
 | fadeOpacity         | number        | Yes       | 0.6     | Opacity of the screen outside the drawer.                                               |
 | drawerScreenWidth   | number        | Yes       | 0.8     | 0 - 1, width of drawer in relation to the screen.                                       |
 | drawerScreenHeight  | number        | Yes       | 1       | 0 - 1, height of drawer in relation to the screen.                                      |                         
+
+## <SideMenuView />
+
+<img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-navigation-drawer-extension/slide-drawer.gif" width="48%" />
+
+The library also exposes a component which will allow you to open the drawer by either swiping the left or right gutter of the phone. This is achieved by using event listeners
+to communicate with the RNNDrawer HOC component. To enable this feature wrap your screen with the `SideMenuView` component. `<SideMenuView>` is just an enhanced `<View>` all props are passed down to `<View>`.
+
+```js
+import { SideMenuView } from "react-native-navigation-drawer-extension";
+
+<SideMenuView
+  style={{ flex: 1 }}
+  right={() => Navigation.showDrawer({
+    component: {
+      name: "CustomDrawer",
+      passProps: {
+       direction: "right"
+      }
+    }
+  })}
+ >
+  {...}
+ </SideMenuView>
+
+```git commit -m "Added component to enable a swipeable gutter which opens the drawer"
+
+#### Props
+
+| Prop                | Type          | Optional  | Default | Description                                                                             |
+| ------------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------- |
+| left                | func          | Yes       |         | Function which is executed when the left gutter is swiped.                              |
+| right               | func          | Yes       |         | Function which is executed when the right gutter is swiped.                             |
+| swipeSensitivity    | number        | Yes       | 0.2     | The sensitivity of the swipe to invoke each function.                                   |
+| sideMargin          | number        | Yes       | 15      | The size of the gutter for both sides.                                                  |
+| sideMarginLeft      | number        | Yes       |         | The size of the gutter for the left side.                                               |
+| sideMarginRight     | number        | Yes       |         | The size of the gutter for the right side.                                              |   
