@@ -19,5 +19,5 @@ Navigation.dismissDrawer = () => {
   emit('DISMISS_DRAWER', true);
 };
 
-export RNNDrawer from "./RNNDrawer";
-export SideMenuView from "./SideMenuView";
+export { default as RNNDrawer } from "./RNNDrawer";
+export { default as SideMenuView } from "./SideMenuView";
