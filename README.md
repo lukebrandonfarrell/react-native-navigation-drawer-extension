@@ -57,10 +57,10 @@ RNNDrawer.showDrawer({
       fadeOpacity: 0.6,
       drawerScreenWidth: "75%" || 445, // Use relative to screen '%' or absolute
       drawerScreenHeight: "100%" || 700,
-      style: { // Styles the drawer, supports any react-native style
+      style: { // Styles the drawer container, supports any react-native style
         backgroundColor: "red",
       },
-      parentComponentId: this.props.componentId,
+      parentComponentId: this.props.componentId, // Custom prop, will be available in your custom drawer component props
     },
   }
 });
@@ -82,6 +82,9 @@ Navigation.push(parentComponentId, {
 ```
 
 #### Props
+
+The props below are used to configure the drawer and are to be used in RNN `passProps:`. Any aditional
+props will be passed to your custom drawer component.
 
 | Prop                | Type          | Optional  | Default | Description                                                                             |
 | ------------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------- |

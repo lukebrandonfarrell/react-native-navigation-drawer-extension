@@ -43,7 +43,6 @@ interface IProps {
   fadeOpacity: number;
   drawerScreenWidth: number | string;
   drawerScreenHeight: number | string;
-  dismiss: boolean;
   style: any;
 }
 
@@ -192,21 +191,6 @@ class RNNDrawer {
             duration: this.props.animationOpenTime,
           },
         );
-      }
-
-      /**
-       * [ Built-in React method. ]
-       *
-       * Executed when the components props are updated.
-       */
-      componentDidUpdate(prevProps: IProps) {
-        /** Props */
-        const { dismiss } = this.props;
-        const { dismiss: prevDismiss } = prevProps;
-
-        if (dismiss !== prevDismiss) {
-          this.dismissDrawerWithAnimation();
-        }
       }
 
       /**
