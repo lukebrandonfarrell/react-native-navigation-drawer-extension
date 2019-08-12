@@ -18,9 +18,14 @@
 
 ## Install
 
-Install via npm:
 ```sh
  npm install react-native-navigation-drawer-extension --save
+```
+
+or
+
+```sh
+ yarn add react-native-navigation-drawer-extension
 ```
 
 ## Usage
