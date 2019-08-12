@@ -1,7 +1,7 @@
 ## 2.0.0 (August 2019)
 
 - Package has been re-written using TypeScript!
-- The 'jetemit' dependacy has been removed in favour of a in-built event system (zero dependancies 🚀).
+- The 'jetemit' dependancy has been removed in favour of a in-built event system (zero dependancies 🚀).
 - Height / Width of drawer can now be provided as a percentage or absolute value (e.g. `"80%"` | `425`)
 - The library no longer monkey patches the RNN Navigation method. Instead the drawer can be toggled using `RNNDrawer.showDrawer(options: Layout)` or `RNNDrawer.dismissDrawer(options: Layout)`.
 - Fixed [#8](https://github.com/lukebrandonfarrell/react-native-navigation-drawer-extension/issues/8) with undefined listenr.
