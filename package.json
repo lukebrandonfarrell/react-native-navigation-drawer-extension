@@ -2,9 +2,16 @@
   "name": "react-native-navigation-drawer-extension",
   "version": "1.1.2",
   "description": "Drawer API built on top of wix react-native-navigation for iOS and Android.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\"",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run format"
   },
   "repository": {
     "type": "git",
@@ -30,7 +37,14 @@
     "url": "https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer/issues"
   },
   "homepage": "https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer#readme",
-  "dependencies": {
-    "jetemit": "^3.3.0"
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^16.9.1",
+    "@types/react-native": "^0.60.4",
+    "prettier": "1.18.2",
+    "react": "^16.9.0",
+    "react-native": "^0.60.4",
+    "react-native-navigation": "^2.26.5",
+    "typescript": "^3.5.3"
   }
 }

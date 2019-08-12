@@ -32,16 +32,16 @@ import { Navigation } from "react-native-navigation";
 import { RNNDrawer } from "react-native-navigation-drawer-extension";
 
 // register our drawer component with RNN
-Navigation.registerComponent("CustomDrawer", () => RNNDrawer(CustomDrawer));
+Navigation.registerComponent("CustomDrawer", () => RNNDrawer.create(CustomDrawer));
 ```
 
-You can then use the drawer by calling a custom method.
+You can then use the drawer by calling a custom method. The `showDrawer` method
+will take a single parameter `options` identical to `showOverlay`.
 
 ````js
-import { Navigation } from "react-native-navigation";
+import { RNNDrawer } from "react-native-navigation-drawer-extension";
 
-// Show drawer
-Navigation.showDrawer({
+RNNDrawer.showDrawer({
   component: {
     name: "CustomDrawer",
     passProps: {
@@ -50,8 +50,8 @@ Navigation.showDrawer({
       direction: "left",
       dismissWhenTouchOutside: true,
       fadeOpacity: 0.6,
-      drawerScreenWidth: 0.8,
-      drawerScreenHeight: 1,
+      drawerScreenWidth: "75%" || 445, // Use relative to screen '%' or absolute
+      drawerScreenHeight: "100%" || 700,
       style: { // Styles the drawer, supports any react-native style
         backgroundColor: "red",
       },
@@ -62,8 +62,7 @@ Navigation.showDrawer({
 ```
 
 ```js
-// Dismiss drawer
-Navigation.dismissDrawer(); // Now works with Animation!
+RNNDrawer.dismissDrawer();
 ````
 
 To navigate from the drawer you must pass the parent `componentId` and use that to navigate. e.g:
