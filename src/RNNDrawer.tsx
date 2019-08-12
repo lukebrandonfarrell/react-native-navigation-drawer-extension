@@ -75,7 +75,7 @@ interface SwipeMoveInterface {
 }
 
 class RNNDrawer {
-  static create(Component : React.ComponentType) : any {
+  static create(Component: React.ComponentType): any {
     class WrappedDrawer extends React.Component<IProps, IState> {
       private readonly screenWidth: number;
       private readonly screenHeight: number;
@@ -95,8 +95,8 @@ class RNNDrawer {
         direction: 'left',
         dismissWhenTouchOutside: true,
         fadeOpacity: 0.6,
-        drawerScreenWidth: "80%",
-        drawerScreenHeight: "100%",
+        drawerScreenWidth: '80%',
+        drawerScreenHeight: '100%',
       };
 
       /**
@@ -108,7 +108,7 @@ class RNNDrawer {
        */
       constructor(props: IProps) {
         super(props);
-        
+
         this.screenWidth = Dimensions.get('window').width;
         this.screenHeight = Dimensions.get('window').height;
 
@@ -117,24 +117,33 @@ class RNNDrawer {
          * to a number as it can either be a string ('20%')
          * or number (400).
          */
-        const _resolveDrawerSize = (value : number | string, max : number) : number => {
+        const _resolveDrawerSize = (
+          value: number | string,
+          max: number,
+        ): number => {
           /*
            * If the type is a string '%' then it should be a percentage relative
            * to our max size.
            */
           if (typeof value === 'string') {
-            const valueAsNumber = parseFloat((value as string)) || 100;
+            const valueAsNumber = parseFloat(value as string) || 100;
             const size = max * (valueAsNumber / 100);
 
             return size;
           }
 
           return value;
-        }
+        };
 
         /** Component Variables */
-        this.drawerWidth = _resolveDrawerSize(props.drawerScreenWidth, this.screenWidth);
-        this.drawerHeight = _resolveDrawerSize(props.drawerScreenHeight, this.screenHeight);
+        this.drawerWidth = _resolveDrawerSize(
+          props.drawerScreenWidth,
+          this.screenWidth,
+        );
+        this.drawerHeight = _resolveDrawerSize(
+          props.drawerScreenHeight,
+          this.screenHeight,
+        );
 
         this.drawerOpenedValues = {
           left: 0,
