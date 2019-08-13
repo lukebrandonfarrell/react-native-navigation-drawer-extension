@@ -9,7 +9,9 @@
   <a href="https://www.npmjs.com/package/react-native-navigation-drawer-extension" rel="nofollow">
   <img src="http://img.shields.io/npm/l/react-native-navigation-drawer-extension.svg?style=flat-square" alt="license" style="max-width:100%;" />
   </a>
-
+  <a href="https://www.npmjs.com/package/react-native-navigation-drawer-extension" rel="nofollow">
+    <img src="http://img.shields.io/npm/dt/react-native-navigation-drawer-extension.svg?style=flat-square" alt="downloads" style="max-width:100%;" />
+  </a>
   <hr />
 </p>
 
