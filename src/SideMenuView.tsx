@@ -64,29 +64,29 @@ class SideMenuView extends React.Component<IProps, {}> {
       // Ask to be the responder:
       onStartShouldSetPanResponder: (
         _evt: GestureResponderEvent,
-        _gestureState: PanResponderGestureState
+        _gestureState: PanResponderGestureState,
       ) => true,
       onStartShouldSetPanResponderCapture: (
         _evt: GestureResponderEvent,
-        _gestureState: PanResponderGestureState
+        _gestureState: PanResponderGestureState,
       ) => true,
       onMoveShouldSetPanResponder: (
         _evt: GestureResponderEvent,
-        _gestureState: PanResponderGestureState
+        _gestureState: PanResponderGestureState,
       ) => true,
       onMoveShouldSetPanResponderCapture: (
         _evt: GestureResponderEvent,
-        _gestureState: PanResponderGestureState
+        _gestureState: PanResponderGestureState,
       ) => true,
       onPanResponderGrant: (
         _evt: GestureResponderEvent,
-        _gestureState: PanResponderGestureState
+        _gestureState: PanResponderGestureState,
       ) => {
         dispatch('SWIPE_START');
       },
       onPanResponderRelease: (
         _evt: GestureResponderEvent,
-        gestureState: PanResponderGestureState
+        gestureState: PanResponderGestureState,
       ) => {
         const { vx } = gestureState;
 
@@ -95,11 +95,11 @@ class SideMenuView extends React.Component<IProps, {}> {
       },
       onPanResponderTerminationRequest: (
         _evt: GestureResponderEvent,
-        _gestureState: PanResponderGestureState
+        _gestureState: PanResponderGestureState,
       ) => false,
       onShouldBlockNativeResponder: (
         _evt: GestureResponderEvent,
-        _gestureState: PanResponderGestureState
+        _gestureState: PanResponderGestureState,
       ) => false,
     };
 
@@ -108,7 +108,7 @@ class SideMenuView extends React.Component<IProps, {}> {
       ...this._panResponderMethods,
       onPanResponderMove: (
         _evt: GestureResponderEvent,
-        gestureState: PanResponderGestureState
+        gestureState: PanResponderGestureState,
       ) => {
         const { moveX, vx } = gestureState;
 
@@ -116,7 +116,7 @@ class SideMenuView extends React.Component<IProps, {}> {
         dispatch('SWIPE_MOVE', { value: moveX, direction: 'left' });
 
         // Left Swipe
-        if(typeof(swipeSensitivity) !== 'undefined'){
+        if (typeof swipeSensitivity !== 'undefined') {
           if (vx > swipeSensitivity && !this.isOpened && left) {
             this.isOpened = true;
             left();
@@ -130,7 +130,7 @@ class SideMenuView extends React.Component<IProps, {}> {
       ...this._panResponderMethods,
       onPanResponderMove: (
         _evt: GestureResponderEvent,
-        gestureState: PanResponderGestureState
+        gestureState: PanResponderGestureState,
       ) => {
         const { moveX, vx } = gestureState;
 
@@ -138,7 +138,7 @@ class SideMenuView extends React.Component<IProps, {}> {
         dispatch('SWIPE_MOVE', { value: moveX, direction: 'right' });
 
         // Right Swipe
-        if(typeof(swipeSensitivity) !== 'undefined'){
+        if (typeof swipeSensitivity !== 'undefined') {
           if (vx > -swipeSensitivity && !this.isOpened && right) {
             this.isOpened = true;
             right();

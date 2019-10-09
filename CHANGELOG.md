@@ -1,3 +1,9 @@
+## 2.0.2 (October 2019)
+- Fixed possuble undefined value when swipping.
+
+## 2.0.1 (August 2019)
+- Added types declaration to NPM package.json
+
 ## 2.0.0 (August 2019)
 
 - Package has been re-written using TypeScript!
