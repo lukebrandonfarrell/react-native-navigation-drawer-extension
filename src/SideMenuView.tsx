@@ -116,9 +116,11 @@ class SideMenuView extends React.Component<IProps, {}> {
         dispatch('SWIPE_MOVE', { value: moveX, direction: 'left' });
 
         // Left Swipe
-        if (vx > swipeSensitivity && !this.isOpened && left) {
-          this.isOpened = true;
-          left();
+        if(typeof(swipeSensitivity) !== 'undefined'){
+          if (vx > swipeSensitivity && !this.isOpened && left) {
+            this.isOpened = true;
+            left();
+          }
         }
       },
     });
@@ -136,9 +138,11 @@ class SideMenuView extends React.Component<IProps, {}> {
         dispatch('SWIPE_MOVE', { value: moveX, direction: 'right' });
 
         // Right Swipe
-        if (vx > -swipeSensitivity && !this.isOpened && right) {
-          this.isOpened = true;
-          right();
+        if(typeof(swipeSensitivity) !== 'undefined'){
+          if (vx > -swipeSensitivity && !this.isOpened && right) {
+            this.isOpened = true;
+            right();
+          }
         }
       },
     });
@@ -187,7 +191,6 @@ class SideMenuView extends React.Component<IProps, {}> {
       sideMargin,
       sideMarginLeft,
       sideMarginRight,
-      swipeSensitivity: _swipeSensitivity,
       ...props
     } = this.props;
 
