@@ -271,7 +271,6 @@ class RNNDrawer {
               // Calculates the position of the drawer from the left side of the screen
               const alignedMovementValue = this.screenWidth - normalizedValue;
               // Calculates the percetage 0 - 100 of which the drawer is open
-              console.log({ normalizedValue, alignedMovementValue });
               const openedPercentage = Math.abs(
                 (Math.abs(normalizedValue) / this.drawerWidth) * 100,
               );

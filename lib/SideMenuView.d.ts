@@ -4,14 +4,16 @@
  * @description A swipeable view to open a drawer.
  */
 import * as React from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
 declare type SwipeFunctionType = () => void;
 interface IProps {
-    swipeSensitivity: number;
-    left: SwipeFunctionType;
-    right: SwipeFunctionType;
-    sideMargin: number;
-    sideMarginLeft: number;
-    sideMarginRight: number;
+    swipeSensitivity?: number;
+    left?: SwipeFunctionType;
+    right?: SwipeFunctionType;
+    sideMargin?: number;
+    sideMarginLeft?: number;
+    sideMarginRight?: number;
+    style?: StyleProp<ViewStyle>;
 }
 declare class SideMenuView extends React.Component<IProps, {}> {
     private isOpened;
