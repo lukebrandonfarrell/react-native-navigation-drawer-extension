@@ -110,7 +110,7 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
 
 <SideMenuView
   style={{ flex: 1 }}
-  right={() => Navigation.showDrawer({
+  right={() => RNNDrawer.showDrawer({
     component: {
       name: "CustomDrawer",
       passProps: {
