@@ -205,6 +205,7 @@ class SideMenuView extends React.Component<IProps, {}> {
               position: 'absolute',
               width: sideMargin || sideMarginLeft,
               height: screenHeight,
+              zIndex: 9999
             }}
             {...this._leftPanResponder.panHandlers}
           />
@@ -217,6 +218,7 @@ class SideMenuView extends React.Component<IProps, {}> {
               right: 0,
               width: sideMargin || sideMarginRight,
               height: screenHeight,
+              zIndex: 9999
             }}
             {...this._rightPanResponder.panHandlers}
           />
