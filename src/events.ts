@@ -3,11 +3,6 @@
  * @description Event dispatcher for comunication between components.
  */
 
-interface EventInterface {
-  count: number;
-  funcs: any;
-}
-
 interface EvnetsInterface {
   [key: string]: any;
 }

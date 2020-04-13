@@ -9,9 +9,9 @@ declare class RNNDrawer {
     /**
      * Shows a drawer component
      *
-     * @param options
+     * @param layout
      */
-    static showDrawer(options: Layout): void;
+    static showDrawer(layout: Layout): void;
     /**
      * Dismiss the drawer component
      */

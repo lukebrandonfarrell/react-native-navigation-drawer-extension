@@ -31,7 +31,7 @@
     "typescript"
   ],
   "peerDependencies": {
-    "react-native-navigation": "2.x"
+    "react-native-navigation": ">= 3.x"
   },
   "author": "Luke Brandon Farrell",
   "license": "MIT",
@@ -46,7 +46,7 @@
     "prettier": "1.18.2",
     "react": "^16.9.0",
     "react-native": "^0.60.4",
-    "react-native-navigation": "^2.26.5",
-    "typescript": "^3.5.3"
+    "react-native-navigation": "^6.4.0",
+    "typescript": "^3.8.3"
   }
 }
