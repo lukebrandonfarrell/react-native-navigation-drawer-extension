@@ -26,7 +26,7 @@ export function listen(name: string, func: any): () => void {
   const key = _events[name].count++;
   _events[name].funcs[key] = func;
 
-  return function() {
+  return function () {
     delete _events[name].funcs[key];
   };
 }

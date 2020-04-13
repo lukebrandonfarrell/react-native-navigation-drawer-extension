@@ -190,7 +190,7 @@ class RNNDrawer {
         this.animatedDrawer = Animated.timing(this.state.sideMenuOpenValue, {
           toValue: this.drawerOpenedValues[direction],
           duration: this.props.animationOpenTime,
-          useNativeDriver: false
+          useNativeDriver: false,
         });
 
         // Animate outside side menu opacity
@@ -199,7 +199,7 @@ class RNNDrawer {
           {
             toValue: fadeOpacity,
             duration: this.props.animationOpenTime,
-            useNativeDriver: false
+            useNativeDriver: false,
           },
         );
       }
@@ -410,7 +410,7 @@ class RNNDrawer {
         Animated.timing(this.state.sideMenuOpenValue, {
           toValue: closeValues[direction],
           duration: this.props.animationCloseTime,
-          useNativeDriver: false
+          useNativeDriver: false,
         }).start(() => {
           Navigation.dismissOverlay(this.props.componentId);
           this.setState({ sideMenuIsDismissing: false });
@@ -420,7 +420,7 @@ class RNNDrawer {
         Animated.timing(this.state.sideMenuOverlayOpacity, {
           toValue: 0,
           duration: this.props.animationCloseTime,
-          useNativeDriver: false
+          useNativeDriver: false,
         }).start();
       }
     }
@@ -435,12 +435,14 @@ class RNNDrawer {
    */
   static showDrawer(layout: Layout) {
     // By default for this library, we make the 'componentBackgroundColor' transparent
-    const componentBackgroundColor = layout?.component?.options?.layout?.componentBackgroundColor ?? "transparent";
+    const componentBackgroundColor =
+      layout?.component?.options?.layout?.componentBackgroundColor ??
+      'transparent';
     const options = {
       ...layout?.component?.options,
-      layout: { 
-        componentBackgroundColor: componentBackgroundColor
-      }
+      layout: {
+        componentBackgroundColor: componentBackgroundColor,
+      },
     };
 
     // Mutate options to add 'transparent' by default
