@@ -2,6 +2,8 @@
 
 [React Native Navigation by Wix](https://wix.github.io/react-native-navigation/#/) does not offer an in-built solution for displaying a drawer on iOS. Their current side-menu has limited functionality on both iOS and Android. This is a drawer solution using showOverlay under the hood to display a drawer on iOS and Android.
 
+If you are using React Native Navigation >= 3.0.0 then use version 3.x.x + of this library.
+
 <p align="left">
   <a href="https://www.npmjs.com/package/react-native-navigation-drawer-extension" rel="nofollow">
   <img src="https://img.shields.io/npm/v/react-native-navigation-drawer-extension.svg?style=flat-square" alt="version" style="max-width:100%;" />
