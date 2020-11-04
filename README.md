@@ -64,13 +64,11 @@ RNNDrawer.showDrawer({
       style: { // Styles the drawer container, supports any react-native style
         backgroundColor: "red",
       },
-      parentComponentId: this.props.componentId, // Custom prop, will be available in your custom drawer component props
+      parentComponentId: props.componentId, // Custom prop, will be available in your custom drawer component props
     },
   }
 });
-```
 
-```js
 RNNDrawer.dismissDrawer();
 ````
 
