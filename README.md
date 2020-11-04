@@ -85,6 +85,8 @@ Navigation.push(parentComponentId, {
 });
 ```
 
+There's a complete and functional example at the `example` folder, with more thorough explanation on each method.
+
 #### Props
 
 The props below are used to configure the drawer and are to be used in RNN `passProps:`. Any aditional
