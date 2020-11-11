@@ -1,7 +1,7 @@
 <h2 align="center">
   <img src="https://user-images.githubusercontent.com/7014073/98849326-cca07f80-2431-11eb-82dd-fd2b4e52be44.png?s=300" width="500" /><br/>
   React Native Navigation Drawer Extension
-</h>
+</h2>
 
 <p>
   <hr/>
