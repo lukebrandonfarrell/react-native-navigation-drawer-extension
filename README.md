@@ -1,10 +1,10 @@
-![EXPORT](https://user-images.githubusercontent.com/7014073/98849326-cca07f80-2431-11eb-82dd-fd2b4e52be44.png)
+<h2 align="center">
+  <img src="https://user-images.githubusercontent.com/7014073/98849326-cca07f80-2431-11eb-82dd-fd2b4e52be44.png?s=300" width="500" /><br/>
+  React Native Navigation Drawer Extension
+</h>
 
-[React Native Navigation by Wix](https://wix.github.io/react-native-navigation/#/) does not offer an in-built solution for displaying a drawer on iOS. Their current side-menu has limited functionality on both iOS and Android. This is a drawer solution using showOverlay under the hood to display a drawer on iOS and Android.
 
-If you are using React Native Navigation >= 3.0.0 then use version 3.x.x + of this library.
-
-<p align="left">
+<p align="center">
   <a href="https://www.npmjs.com/package/react-native-navigation-drawer-extension" rel="nofollow">
   <img src="https://img.shields.io/npm/v/react-native-navigation-drawer-extension.svg?style=flat-square" alt="version" style="max-width:100%;" />
   </a>
@@ -16,6 +16,10 @@ If you are using React Native Navigation >= 3.0.0 then use version 3.x.x + of th
   </a>
   <hr />
 </p>
+
+[React Native Navigation by Wix](https://wix.github.io/react-native-navigation/#/) does not offer an in-built solution for displaying a drawer on iOS. Their current side-menu has limited functionality on both iOS and Android. This is a drawer solution using showOverlay under the hood to display a drawer on iOS and Android.
+
+If you are using React Native Navigation >= 3.0.0 then use version 3.x.x + of this library.
 
 <img align="left" src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-navigation-drawer-extension/left-drawer.gif" width="48%" />
 <img src="https://raw.githubusercontent.com/LukeBrandonFarrell/open-source-images/master/react-native-navigation-drawer-extension/bottom-drawer.gif" width="48%" />
