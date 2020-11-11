@@ -18,6 +18,8 @@ import { Navigation, Layout } from 'react-native-navigation';
 /* Utils - Project Utilities */
 import { listen, dispatch } from './events';
 
+const MaxWidthOnLandscapeMode = 300;
+
 enum DirectionType {
   left = 'left',
   right = 'right',
@@ -30,6 +32,7 @@ interface IState {
   sideMenuOverlayOpacity: any;
   sideMenuSwipingStarted: boolean;
   sideMenuIsDismissing: boolean;
+  screenHeight: number;
 }
 
 interface IProps {
@@ -136,10 +139,12 @@ class RNNDrawer {
         };
 
         /** Component Variables */
-        this.drawerWidth = _resolveDrawerSize(
-          props.drawerScreenWidth,
-          this.screenWidth,
-        );
+        this.drawerWidth = this.isLandscape()
+          ? MaxWidthOnLandscapeMode
+          : _resolveDrawerSize(
+            props.drawerScreenWidth,
+            this.screenWidth,
+          );
         this.drawerHeight = _resolveDrawerSize(
           props.drawerScreenHeight,
           this.screenHeight,
@@ -165,6 +170,7 @@ class RNNDrawer {
           sideMenuOverlayOpacity: new Animated.Value(0),
           sideMenuSwipingStarted: false,
           sideMenuIsDismissing: false,
+          screenHeight: this.screenHeight,
         };
 
         /** Component Bindings */
@@ -174,7 +180,17 @@ class RNNDrawer {
         );
         this.registerListeners = this.registerListeners.bind(this);
         this.removeListeners = this.removeListeners.bind(this);
+        this.isLandscape = this.isLandscape.bind(this);
         Navigation.events().bindComponent(this);
+      }
+
+      /**
+       * Check if device is in landscape mode
+       */
+      isLandscape() {
+        const dim = Dimensions.get('window');
+
+        return dim.height <= dim.width;
       }
 
       /**
@@ -236,6 +252,21 @@ class RNNDrawer {
       registerListeners() {
         /** Props */
         const { direction, fadeOpacity } = this.props;
+
+        // Adapt the drawer's size on orientation change
+        Dimensions.addEventListener("change", ({ window }) => {
+          const screenHeight = window.height;
+
+          this.setState({ screenHeight });
+
+          // Apply correct position if opened from right
+          if (this.props.direction === "right") {
+            // Calculates the position of the drawer from the left side of the screen
+            const alignedMovementValue = window.width - this.drawerWidth;
+            
+            this.state.sideMenuOpenValue.setValue(alignedMovementValue);
+          }
+        })
 
         // Executes when the side of the screen interaction starts
         this.unsubscribeSwipeStart = listen('SWIPE_START', () => {
@@ -331,6 +362,7 @@ class RNNDrawer {
        * Removes all the listenrs from this component
        */
       removeListeners() {
+        Dimensions.removeEventListener("change", () => { });
         if (this.unsubscribeSwipeStart) this.unsubscribeSwipeStart();
         if (this.unsubscribeSwipeMove) this.unsubscribeSwipeMove();
         if (this.unsubscribeSwipeEnd) this.unsubscribeSwipeEnd();
@@ -370,7 +402,7 @@ class RNNDrawer {
                 { backgroundColor: '#FFF' },
                 style,
                 {
-                  height: this.drawerHeight,
+                  height: this.state.screenHeight,
                   width: this.drawerWidth,
                   ...animatedValue,
                 },
