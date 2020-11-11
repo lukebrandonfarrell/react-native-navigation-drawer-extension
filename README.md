@@ -3,9 +3,8 @@
   React Native Navigation Drawer Extension
 </h2>
 
-<p>
+
   <hr/>
-</p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/react-native-navigation-drawer-extension" rel="nofollow">
