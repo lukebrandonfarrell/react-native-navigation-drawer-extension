@@ -3,9 +3,6 @@
   React Native Navigation Drawer Extension
 </h2>
 
-
-  <hr/>
-
 <p align="center">
   <a href="https://www.npmjs.com/package/react-native-navigation-drawer-extension" rel="nofollow">
   <img src="https://img.shields.io/npm/v/react-native-navigation-drawer-extension.svg?style=flat-square" alt="version" style="max-width:100%;" />
