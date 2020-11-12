@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {RNNDrawer} from 'react-native-navigation-drawer-extension';
+import { RNNDrawer, SideMenuView } from 'react-native-navigation-drawer-extension';
 
 const HomePage = (props) => {
   const onPress = () => {
@@ -26,15 +26,29 @@ const HomePage = (props) => {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.mainContainer}>
-        <Text style={styles.headlineText}>HomePage View</Text>
+    <SideMenuView
+      style={{ flex: 1 }}
+      left={() => RNNDrawer.showDrawer({
+        component: {
+          name: 'CustomDrawer',
+          passProps: {
+            direction: 'left',
+            parentComponentId: props.componentId,
+          },
+        },
+      }
+      )}
+    >
+      <SafeAreaView>
+        <View style={styles.mainContainer}>
+          <Text style={styles.headlineText}>HomePage View</Text>
 
-        <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
-          <Text style={styles.buttonText}>Open Drawer</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+          <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
+            <Text style={styles.buttonText}>Open Drawer</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </SideMenuView>
   );
 };
 
