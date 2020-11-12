@@ -1,6 +1,6 @@
 {
   "name": "react-native-navigation-drawer-extension",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Drawer API built on top of wix react-native-navigation for iOS and Android.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
