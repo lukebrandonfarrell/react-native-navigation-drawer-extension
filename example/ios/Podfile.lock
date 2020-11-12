@@ -296,12 +296,12 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
-  - ReactNativeNavigation (7.2.0):
+  - ReactNativeNavigation (7.3.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.2.0)
-  - ReactNativeNavigation/Core (7.2.0):
+    - ReactNativeNavigation/Core (= 7.3.0)
+  - ReactNativeNavigation/Core (7.3.0):
     - React-Core
     - React-RCTImage
     - React-RCTText
@@ -467,7 +467,7 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
-  ReactNativeNavigation: 2f6571c37eaeb7d472fe8a3779d49d7aae32e75a
+  ReactNativeNavigation: c2dcda2b86e32090c443182206c915107d03106f
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
