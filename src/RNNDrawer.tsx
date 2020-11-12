@@ -71,7 +71,6 @@ declare interface RNNDrawerOptions {
   drawerScreenHeight?: number;
 }
 
-
 enum DirectionType {
   left = 'left',
   right = 'right',
@@ -131,11 +130,11 @@ interface SwipeMoveInterface {
 
 class RNNDrawer {
   /**
-  * Generates the drawer component to
-  * be used with react-native-navigation
-  * 
-  * @param component
-  */
+   * Generates the drawer component to
+   * be used with react-native-navigation
+   *
+   * @param component
+   */
   static create(Component: React.ComponentType): any {
     class WrappedDrawer extends React.Component<IProps, IState> {
       private readonly screenWidth: number;
@@ -255,10 +254,7 @@ class RNNDrawer {
         /** Component Variables */
         this.drawerWidth = this.isLandscape()
           ? MaxWidthOnLandscapeMode
-          : _resolveDrawerSize(
-            props.drawerScreenWidth,
-            this.screenWidth,
-          );
+          : _resolveDrawerSize(props.drawerScreenWidth, this.screenWidth);
         this.drawerHeight = _resolveDrawerSize(
           props.drawerScreenHeight,
           this.screenHeight,
@@ -368,19 +364,19 @@ class RNNDrawer {
         const { direction, fadeOpacity } = this.props;
 
         // Adapt the drawer's size on orientation change
-        Dimensions.addEventListener("change", ({ window }) => {
+        Dimensions.addEventListener('change', ({ window }) => {
           const screenHeight = window.height;
 
           this.setState({ screenHeight });
 
           // Apply correct position if opened from right
-          if (this.props.direction === "right") {
+          if (this.props.direction === 'right') {
             // Calculates the position of the drawer from the left side of the screen
             const alignedMovementValue = window.width - this.drawerWidth;
 
             this.state.sideMenuOpenValue.setValue(alignedMovementValue);
           }
-        })
+        });
 
         // Executes when the side of the screen interaction starts
         this.unsubscribeSwipeStart = listen('SWIPE_START', () => {
@@ -476,7 +472,7 @@ class RNNDrawer {
        * Removes all the listenrs from this component
        */
       removeListeners() {
-        Dimensions.removeEventListener("change", () => { });
+        Dimensions.removeEventListener('change', () => {});
         if (this.unsubscribeSwipeStart) this.unsubscribeSwipeStart();
         if (this.unsubscribeSwipeMove) this.unsubscribeSwipeMove();
         if (this.unsubscribeSwipeEnd) this.unsubscribeSwipeEnd();

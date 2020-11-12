@@ -1,4 +1,4 @@
-## 3.1.0 (November 2020)
+## 3.2.0 (November 2020)
 - Added orientation support
 - Drawer can now be closed by swipping it
 - Added example project
