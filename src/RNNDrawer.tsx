@@ -71,7 +71,7 @@ declare interface RNNDrawerOptions {
   drawerScreenHeight?: number;
 }
 
-enum DirectionType {
+export enum DirectionType {
   left = 'left',
   right = 'right',
   bottom = 'bottom',

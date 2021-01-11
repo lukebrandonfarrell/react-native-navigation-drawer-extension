@@ -5,15 +5,17 @@
  */
 import * as React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-declare type SwipeFunctionType = () => void;
+import { Options } from 'react-native-navigation';
 interface IProps {
     swipeSensitivity?: number;
-    left?: SwipeFunctionType;
-    right?: SwipeFunctionType;
     sideMargin?: number;
     sideMarginLeft?: number;
     sideMarginRight?: number;
     style?: StyleProp<ViewStyle>;
+    drawerName: string;
+    direction: 'left' | 'right';
+    passProps?: any;
+    options?: Options;
 }
 declare class SideMenuView extends React.Component<IProps, {}> {
     private isOpened;
@@ -24,6 +26,7 @@ declare class SideMenuView extends React.Component<IProps, {}> {
     static defaultProps: {
         sideMargin: number;
         swipeSensitivity: number;
+        direction: string;
     };
     /**
      * [ Built-in React method. ]

@@ -18,10 +18,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import { Options } from 'react-native-navigation';
-
 /* Utils - Project Utilities */
 import RNNDrawer from './RNNDrawer';
 import { listen, dispatch } from './events';
+import { DirectionType } from "./RNNDrawer";
 
 const screenHeight: number = Dimensions.get('screen').height;
 
@@ -33,7 +33,7 @@ interface IProps {
   style?: StyleProp<ViewStyle>;
   drawerName: string;
   direction: 'left' | 'right';
-  passProps?: object;
+  passProps?: any;
   options?: Options;
 }
 
@@ -133,7 +133,8 @@ class SideMenuView extends React.Component<IProps, {}> {
               component: {
                 name: drawerName,
                 passProps: {
-                  direction: 'left',
+                  direction: DirectionType.left,
+                  parentComponentId: passProps?.parentComponentId,
                   ...passProps,
                 },
                 options: { ...options },
@@ -164,7 +165,8 @@ class SideMenuView extends React.Component<IProps, {}> {
               component: {
                 name: drawerName,
                 passProps: {
-                  direction: 'right',
+                  direction: DirectionType.right,
+                  parentComponentId: passProps?.parentComponentId,
                   ...passProps,
                 },
                 options: { ...options },

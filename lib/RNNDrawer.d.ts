@@ -43,7 +43,7 @@ declare interface RNNDrawerOptions {
      */
     drawerScreenHeight?: number;
 }
-declare enum DirectionType {
+export declare enum DirectionType {
     left = "left",
     right = "right",
     bottom = "bottom",
@@ -51,11 +51,11 @@ declare enum DirectionType {
 }
 declare class RNNDrawer {
     /**
-    * Generates the drawer component to
-    * be used with react-native-navigation
-    *
-    * @param component
-    */
+     * Generates the drawer component to
+     * be used with react-native-navigation
+     *
+     * @param component
+     */
     static create(Component: React.ComponentType): any;
     /**
      * Shows a drawer component
