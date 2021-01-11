@@ -1,26 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {
-  RNNDrawer,
-  SideMenuView,
-} from 'react-native-navigation-drawer-extension';
+import { StyleSheet, Text } from 'react-native';
+import { SideMenuView } from 'react-native-navigation-drawer-extension';
 
 const AnotherPage = (props) => {
   console.log(props);
   return (
     <SideMenuView
       style={styles.mainContainer}
-      right={() =>
-        RNNDrawer.showDrawer({
-          component: {
-            name: 'CustomDrawer',
-            passProps: {
-              direction: 'right',
-              parentComponentId: props.componentId,
-            },
-          },
-        })
-      }>
+      drawerName={'CustomDrawer'}
+      direction={'right'}
+      passProps={{
+        parentComponentId: props.componentId,
+      }}
+    >
       <Text style={styles.bodyText}>
         In this page, you can try the SideMenuView component, by simply swiping
         from the right to the left.

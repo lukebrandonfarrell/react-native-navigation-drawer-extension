@@ -17,21 +17,24 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
+import { Options } from 'react-native-navigation';
+
 /* Utils - Project Utilities */
+import RNNDrawer from './RNNDrawer';
 import { listen, dispatch } from './events';
 
 const screenHeight: number = Dimensions.get('screen').height;
 
-type SwipeFunctionType = () => void;
-
 interface IProps {
   swipeSensitivity?: number;
-  left?: SwipeFunctionType;
-  right?: SwipeFunctionType;
   sideMargin?: number;
   sideMarginLeft?: number;
   sideMarginRight?: number;
   style?: StyleProp<ViewStyle>;
+  drawerName: string;
+  direction: 'left' | 'right';
+  passProps?: object;
+  options?: Options;
 }
 
 class SideMenuView extends React.Component<IProps, {}> {
@@ -44,6 +47,7 @@ class SideMenuView extends React.Component<IProps, {}> {
   static defaultProps = {
     sideMargin: 15,
     swipeSensitivity: 0.2,
+    direction: 'left',
   };
 
   /**
@@ -58,8 +62,14 @@ class SideMenuView extends React.Component<IProps, {}> {
 
     this.isOpened = false;
 
-    const { swipeSensitivity, left, right } = props;
-
+    const {
+      swipeSensitivity,
+      drawerName,
+      direction,
+      passProps,
+      options,
+    } = props;
+    const directionIsLeft = direction ? direction == 'left' : true;
     this._panResponderMethods = {
       // Ask to be the responder:
       onStartShouldSetPanResponder: (
@@ -117,9 +127,18 @@ class SideMenuView extends React.Component<IProps, {}> {
 
         // Left Swipe
         if (typeof swipeSensitivity !== 'undefined') {
-          if (vx > swipeSensitivity && !this.isOpened && left) {
+          if (vx > swipeSensitivity && !this.isOpened && directionIsLeft) {
             this.isOpened = true;
-            left();
+            RNNDrawer.showDrawer({
+              component: {
+                name: drawerName,
+                passProps: {
+                  direction: 'left',
+                  ...passProps,
+                },
+                options: { ...options },
+              },
+            });
           }
         }
       },
@@ -139,9 +158,18 @@ class SideMenuView extends React.Component<IProps, {}> {
 
         // Right Swipe
         if (typeof swipeSensitivity !== 'undefined') {
-          if (vx > -swipeSensitivity && !this.isOpened && right) {
+          if (vx > -swipeSensitivity && !this.isOpened && !directionIsLeft) {
             this.isOpened = true;
-            right();
+            RNNDrawer.showDrawer({
+              component: {
+                name: drawerName,
+                passProps: {
+                  direction: 'right',
+                  ...passProps,
+                },
+                options: { ...options },
+              },
+            });
           }
         }
       },
@@ -186,19 +214,19 @@ class SideMenuView extends React.Component<IProps, {}> {
     /** Props */
     const {
       children,
-      left,
-      right,
+      direction,
       sideMargin,
       sideMarginLeft,
       sideMarginRight,
       ...props
     } = this.props;
 
+    const directionIsLeft = direction ? direction == 'left' : true;
     return (
       <View {...props}>
         {children}
 
-        {left ? (
+        {directionIsLeft ? (
           <View
             style={{
               left: 0,
@@ -209,9 +237,7 @@ class SideMenuView extends React.Component<IProps, {}> {
             }}
             {...this._leftPanResponder.panHandlers}
           />
-        ) : null}
-
-        {right ? (
+        ) : (
           <View
             style={{
               position: 'absolute',
@@ -222,7 +248,7 @@ class SideMenuView extends React.Component<IProps, {}> {
             }}
             {...this._rightPanResponder.panHandlers}
           />
-        ) : null}
+        )}
       </View>
     );
   }

@@ -114,14 +114,24 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
 
 <SideMenuView
   style={{ flex: 1 }}
-  right={() => RNNDrawer.showDrawer({
-    component: {
-      name: "CustomDrawer",
-      passProps: {
-       direction: "right"
-      }
+  drawerName={'CustomDrawer'}
+  direction={'right'}
+  passProps={{
+    animationOpenTime: 300,
+    animationCloseTime: 300,
+    dismissWhenTouchOutside: true,
+    fadeOpacity: 0.6,
+    drawerScreenWidth: '75%',
+    drawerScreenHeight: '100%',
+    parentComponentId: props.componentId,
+    style: {
+      backgroundColor: 'white', 
+    },
+  }}
+  options={{
+    layout: {
+      componentBackgroundColor: 'transparent',
     }
-  })}
  >
   {...}
  </SideMenuView>
@@ -132,8 +142,11 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
 
 | Prop                | Type          | Optional  | Default | Description                                                                             |
 | ------------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------- |
-| left                | func          | Yes       |         | Function which is executed when the left gutter is swiped.                              |
-| right               | func          | Yes       |         | Function which is executed when the right gutter is swiped.                             |
+| style               | StyleProp<ViewStyle> | Yes |        | The style of the drawer container.                              |
+| drawerName          | string        | No        |         | The name of the drawer component.
+| direction           | string        | Yes       | left    | The direction to open the drawer, one of: ["left", "right"].
+| passProps           | object        | Yes       |         | The values passed to the drawer. See props in RNNDrawer above.
+| options             | Options       | Yes       |         | The options to configure properties of the React Native Navigation native screen. Refer to React Native Navigation's options object.
 | swipeSensitivity    | number        | Yes       | 0.2     | The sensitivity of the swipe to invoke each function.                                   |
 | sideMargin          | number        | Yes       | 15      | The size of the gutter for both sides.                                                  |
 | sideMarginLeft      | number        | Yes       |         | The size of the gutter for the left side.                                               |
