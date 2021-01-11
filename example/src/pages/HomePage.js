@@ -6,7 +6,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { RNNDrawer, SideMenuView } from 'react-native-navigation-drawer-extension';
+import {
+  RNNDrawer,
+  SideMenuView,
+} from 'react-native-navigation-drawer-extension';
 
 const HomePage = (props) => {
   const onPress = () => {
@@ -14,12 +17,22 @@ const HomePage = (props) => {
       component: {
         name: 'CustomDrawer',
         passProps: {
+          animationOpenTime: 300,
+          animationCloseTime: 300,
           direction: 'left',
           dismissWhenTouchOutside: true,
           fadeOpacity: 0.6,
           drawerScreenWidth: '75%' || 445,
           drawerScreenHeight: '100%' || 700,
           parentComponentId: props.componentId,
+          style: {
+            backgroundColor: 'white',
+          },
+        },
+        options: {
+          layout: {
+            componentBackgroundColor: 'black',
+          },
         },
       },
     });
@@ -27,17 +40,26 @@ const HomePage = (props) => {
 
   return (
     <SideMenuView
-      style={{ flex: 1 }}
-      left={() => RNNDrawer.showDrawer({
-        component: {
-          name: 'CustomDrawer',
-          passProps: {
-            direction: 'left',
-            parentComponentId: props.componentId,
-          },
+      style={{ flex: 1 }} // Styles the view
+      drawerName={'CustomDrawer'}
+      direction={'left'}
+      passProps={{
+        animationOpenTime: 300,
+        animationCloseTime: 300,
+        dismissWhenTouchOutside: true,
+        fadeOpacity: 0.6,
+        drawerScreenWidth: '75%' || 445,
+        drawerScreenHeight: '100%' || 700,
+        parentComponentId: props.componentId,
+        style: {
+          backgroundColor: 'white', // Styles the drawer container
         },
-      }
-      )}
+      }}
+      options={{
+        layout: {
+          componentBackgroundColor: 'transparent',
+        },
+      }}
     >
       <SafeAreaView>
         <View style={styles.mainContainer}>
