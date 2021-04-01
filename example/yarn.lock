@@ -5513,10 +5513,10 @@ react-lifecycles-compat@2.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
-react-native-navigation-drawer-extension@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation-drawer-extension/-/react-native-navigation-drawer-extension-3.0.0.tgz#e79607a82ace1087285a4a9a2045fe96f5e21b97"
-  integrity sha512-9cPzgUethqf8r9LKu9R4yc7cM/e8Bfrb5QAoYNROBgHcrxhRZ65Rk013h0cI2AJboe19hPesi67QYPQVl6rRDQ==
+react-native-navigation-drawer-extension@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation-drawer-extension/-/react-native-navigation-drawer-extension-3.2.0.tgz#1658e79e3511f44d77e22421750a888b41dd97c2"
+  integrity sha512-skSMReqOK4UlaamUQx16muN2Qq+aJISTgaONsDYkD+1IJMalw5BAe8TlNIHsuB4S8GF7/dz9uQne4b/dYbWiog==
 
 react-native-navigation@^7.2.0:
   version "7.2.0"
@@ -6997,9 +6997,9 @@ xtend@~4.0.1:
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
-  integrity sha512-r9S/ZyXu/Xu9q1tYlpsLIsa3EeLXXk0VwlxqTcFRfg9EhMW+17kbt9G0NrgCmhGb5vT2hyhJZLfDGx+7+5Uj/w==
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.1.tgz#8db2b83c31c5d75099bb890b23f3094891e247d4"
+  integrity sha512-wNcy4NvjMYL8gogWWYAO7ZFWFfHcbdbE57tZO8e4cbpj8tfUcwrwqSl3ad8HxpYWCdXcJUCeKKZS62Av1affwQ==
 
 yallist@^2.1.2:
   version "2.1.2"
