@@ -1,6 +1,6 @@
 {
   "name": "react-native-navigation-drawer-extension",
-  "version": "4.0.1",
+  "version": "4.0.0",
   "description": "Drawer API built on top of wix react-native-navigation for iOS and Android.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable",
-    "pre-commit": "lint-staged",
-    "postinstall": "husky install"
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run format"
   },
   "repository": {
     "type": "git",
@@ -41,18 +41,12 @@
   "homepage": "https://github.com/lukebrandonfarrell/wix-react-native-navigation-drawer#readme",
   "dependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
     "@types/react": "^16.9.1",
     "@types/react-native": "^0.60.4",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "pinst": "^2.1.6",
-    "prettier": "^2.0.4",
+    "prettier": "2.0.4",
     "react": "^16.9.0",
     "react-native": "^0.60.4",
     "react-native-navigation": "^6.4.0",
-    "semantic-release": "^17.4.3",
-    "typescript": "^3.9.9"
+    "typescript": "^3.8.3"
   }
 }
