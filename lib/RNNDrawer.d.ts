@@ -17,7 +17,7 @@ declare interface RNNDrawerOptions {
      * If not provided, drawer  might have
      * a weird effect when closing
      */
-    direction: DirectionType;
+    direction?: DirectionType;
     /**
      * Time in milliseconds to execute the drawer opening animation
      */
@@ -35,13 +35,20 @@ declare interface RNNDrawerOptions {
      */
     fadeOpacity?: number;
     /**
-     * Width of drawer in relation to the screen (0 to 1)
+     * Width of drawer on portrait orientation. Use '%' for setting
+     * the width in relation to the screen or fixed values for absolute width
      */
-    drawerScreenWidth?: number;
+    drawerScreenWidth?: number | string;
     /**
-     * Height of drawer in relation to the screen (0 to 1)
+     * Width of drawer on landscape orientation. Use '%' for setting
+     * the width in relation to the screen or fixed values for absolute width
      */
-    drawerScreenHeight?: number;
+    drawerScreenWidthOnLandscape?: number | string;
+    /**
+     * Height of drawer. Use '%' for setting the width
+     * in relation to the screen or fixed values for absolute width
+     */
+    drawerScreenHeight?: number | string;
 }
 export declare enum DirectionType {
     left = "left",

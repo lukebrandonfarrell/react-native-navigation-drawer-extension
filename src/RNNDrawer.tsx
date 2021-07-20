@@ -22,8 +22,6 @@ import { Navigation, Layout } from 'react-native-navigation';
 /* Utils - Project Utilities */
 import { listen, dispatch } from './events';
 
-const MaxWidthOnLandscapeMode = 300;
-
 declare interface RNNDrawerOptions {
   /**
    * Id of parent component of the drawer.
@@ -38,7 +36,7 @@ declare interface RNNDrawerOptions {
    * If not provided, drawer  might have
    * a weird effect when closing
    */
-  direction: DirectionType;
+  direction?: DirectionType;
 
   /**
    * Time in milliseconds to execute the drawer opening animation
@@ -61,14 +59,22 @@ declare interface RNNDrawerOptions {
   fadeOpacity?: number;
 
   /**
-   * Width of drawer in relation to the screen (0 to 1)
+   * Width of drawer on portrait orientation. Use '%' for setting
+   * the width in relation to the screen or fixed values for absolute width
    */
-  drawerScreenWidth?: number;
+  drawerScreenWidth?: number | string;
 
   /**
-   * Height of drawer in relation to the screen (0 to 1)
+   * Width of drawer on landscape orientation. Use '%' for setting
+   * the width in relation to the screen or fixed values for absolute width
    */
-  drawerScreenHeight?: number;
+  drawerScreenWidthOnLandscape?: number | string;
+
+  /**
+   * Height of drawer. Use '%' for setting the width
+   * in relation to the screen or fixed values for absolute width
+   */
+  drawerScreenHeight?: number | string;
 }
 
 export enum DirectionType {
@@ -96,6 +102,7 @@ interface IProps {
   dismissWhenTouchOutside: boolean;
   fadeOpacity: number;
   drawerScreenWidth: number | string;
+  drawerScreenWidthOnLandscape: number | string;
   drawerScreenHeight: number | string;
   style: any;
 }
@@ -157,6 +164,7 @@ class RNNDrawer {
         dismissWhenTouchOutside: true,
         fadeOpacity: 0.6,
         drawerScreenWidth: '80%',
+        drawerScreenWidthOnLandscape: '30%',
         drawerScreenHeight: '100%',
       };
 
@@ -252,9 +260,12 @@ class RNNDrawer {
         };
 
         /** Component Variables */
-        this.drawerWidth = this.isLandscape()
-          ? MaxWidthOnLandscapeMode
-          : _resolveDrawerSize(props.drawerScreenWidth, this.screenWidth);
+        this.drawerWidth = _resolveDrawerSize(
+          this.isLandscape()
+            ? props.drawerScreenWidthOnLandscape
+            : props.drawerScreenWidth,
+          this.screenWidth,
+        );
         this.drawerHeight = _resolveDrawerSize(
           props.drawerScreenHeight,
           this.screenHeight,
