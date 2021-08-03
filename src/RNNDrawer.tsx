@@ -59,20 +59,20 @@ declare interface RNNDrawerOptions {
   fadeOpacity?: number;
 
   /**
-   * Width of drawer on portrait orientation. Use '%' for setting
-   * the width in relation to the screen or fixed values for absolute width
+   * Width of drawer on portrait orientation. Pass a string containing '%' (e.g. "80%")
+   * for setting the width in relation to the screen or a number for absolute width (e.g. 300)
    */
   drawerScreenWidth?: number | string;
 
   /**
-   * Width of drawer on landscape orientation. Use '%' for setting
-   * the width in relation to the screen or fixed values for absolute width
+   * Width of drawer on landscape orientation. Pass a string containing '%' (e.g. "80%")
+   * for setting the width in relation to the screen or a number for absolute width (e.g. 300)
    */
   drawerScreenWidthOnLandscape?: number | string;
 
   /**
-   * Height of drawer. Use '%' for setting the width
-   * in relation to the screen or fixed values for absolute width
+   * Height of drawer. Pass a string containing '%' (e.g. "30%")
+   * for setting the height in relation to the screen or a number for absolute height (e.g. 300)
    */
   drawerScreenHeight?: number | string;
 }

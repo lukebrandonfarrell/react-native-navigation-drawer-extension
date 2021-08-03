@@ -99,9 +99,9 @@ props will be passed to your custom drawer component.
 | direction                    | string        | Yes      | left    | Direction to open the collage, one of: ["left", "right", "top", "bottom"].                                                           |
 | dismissWhenTouchOutside      | bool          | Yes      | true    | Should the drawer be dismissed when a click is registered outside?                                                                   |
 | fadeOpacity                  | number        | Yes      | 0.6     | Opacity of the screen outside the drawer.                                                                                            |
-| drawerScreenWidth            | number/string | Yes      | 80%     | Width of drawer on portrait orientation. Use '%' for setting the width in relation to the screen or fixed values for absolute width  |
-| drawerScreenWidthOnLandscape | number/string | Yes      | 30%     | Width of drawer on landscape orientation. Use '%' for setting the width in relation to the screen or fixed values for absolute width |
-| drawerScreenHeight           | number/string | Yes      | 100%    | Height of drawer. Use '%' for setting the width in relation to the screen or fixed values for absolute width
+| drawerScreenWidth            | number/string | Yes      | 80%     | Width of drawer on portrait orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300)  |
+| drawerScreenWidthOnLandscape | number/string | Yes      | 30%     | Width of drawer on landscape orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300) |
+| drawerScreenHeight           | number/string | Yes      | 100%    | Height of drawer. Pass a string containing '%' (e.g. "30%") for setting the height in relation to the screen or a number for absolute height (e.g. 300)
 
 ## SideMenuView
 
