@@ -15,6 +15,17 @@
         "bug",
         "doc",
         "maintenance"
+       ]
+    },
+    {
+      "login": "lukebrandonfarrell",
+      "name": "Luke Brandon Farrell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18139277?v=4",
+      "profile": "https://discord.gg/QqTN6HqNTG",
+      "contributions": [
+        "code",
+        "bug",
+        "doc"
       ]
     }
   ],
