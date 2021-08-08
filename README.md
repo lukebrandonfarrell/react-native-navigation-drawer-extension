@@ -164,7 +164,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/rodriigovieira"><img src="https://avatars.githubusercontent.com/u/7014073?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rodrigo Vieira</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Arodriigovieira" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/rodriigovieira"><img src="https://avatars.githubusercontent.com/u/7014073?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rodrigo Vieira</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Arodriigovieira" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Documentation">📖</a> <a href="#maintenance-rodriigovieira" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
