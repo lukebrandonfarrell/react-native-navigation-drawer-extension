@@ -6,6 +6,18 @@
   "commit": false,
   "contributors": [
     {
+      "login": "rodriigovieira",
+      "name": "Rodrigo Vieira",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7014073?v=4",
+      "profile": "https://github.com/rodriigovieira",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "maintenance"
+       ]
+    },
+    {
       "login": "lukebrandonfarrell",
       "name": "Luke Brandon Farrell",
       "avatar_url": "https://avatars.githubusercontent.com/u/18139277?v=4",
