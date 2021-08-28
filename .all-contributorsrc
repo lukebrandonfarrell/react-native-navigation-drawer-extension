@@ -15,7 +15,7 @@
         "bug",
         "doc",
         "maintenance"
-       ]
+      ]
     },
     {
       "login": "lukebrandonfarrell",
@@ -26,6 +26,15 @@
         "code",
         "bug",
         "doc"
+      ]
+    },
+    {
+      "login": "CursedWizard",
+      "name": "CyberFuntik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67508707?v=4",
+      "profile": "https://github.com/CursedWizard",
+      "contributions": [
+        "code"
       ]
     }
   ],
