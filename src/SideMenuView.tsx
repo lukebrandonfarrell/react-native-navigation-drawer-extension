@@ -123,7 +123,7 @@ class SideMenuView extends React.Component<IProps, {}> {
         const { moveX, vx } = gestureState;
 
         // Emit this event on movement
-        dispatch('SWIPE_MOVE', { value: moveX, direction: 'left' });
+        dispatch('SWIPE_MOVE', { value: { moveX }, direction: 'left' });
 
         // Left Swipe
         if (typeof swipeSensitivity !== 'undefined') {
@@ -135,6 +135,7 @@ class SideMenuView extends React.Component<IProps, {}> {
                 passProps: {
                   direction: DirectionType.left,
                   parentComponentId: passProps?.parentComponentId,
+                  animateDrawerExpanding: false,
                   ...passProps,
                 },
                 options: { ...options },
@@ -155,7 +156,7 @@ class SideMenuView extends React.Component<IProps, {}> {
         const { moveX, vx } = gestureState;
 
         // Emit this event on movement
-        dispatch('SWIPE_MOVE', { value: moveX, direction: 'right' });
+        dispatch('SWIPE_MOVE', { value: { moveX }, direction: 'right' });
 
         // Right Swipe
         if (typeof swipeSensitivity !== 'undefined') {
@@ -167,6 +168,7 @@ class SideMenuView extends React.Component<IProps, {}> {
                 passProps: {
                   direction: DirectionType.right,
                   parentComponentId: passProps?.parentComponentId,
+                  animateDrawerExpanding: false,
                   ...passProps,
                 },
                 options: { ...options },
