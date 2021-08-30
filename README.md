@@ -1,7 +1,4 @@
 <h2 align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img src="https://user-images.githubusercontent.com/7014073/98849326-cca07f80-2431-11eb-82dd-fd2b4e52be44.png?s=300" width="325" /><br/>
   React Native Navigation Drawer Extension
 </h2>
@@ -156,6 +153,10 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
 | sideMarginRight     | number        | Yes       |         | The size of the gutter for the right side.                                              |   
 
 ## Contributors ✨
+  
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+  [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
