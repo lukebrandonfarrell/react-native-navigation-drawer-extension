@@ -101,6 +101,8 @@ props will be passed to your custom drawer component.
 | fadeOpacity         | number        | Yes       | 0.6     | Opacity of the screen outside the drawer.                                               |
 | drawerScreenWidth   | number        | Yes       | 0.8     | 0 - 1, width of drawer in relation to the screen.                                       |
 | drawerScreenHeight  | number        | Yes       | 1       | 0 - 1, height of drawer in relation to the screen.                                      |                         
+| disableDragging     | boolean       | Yes       | false   | Whether you want to disable dragging of the drawer. Useful if you have ScrollView inside the drawer (addresses #62).|                         
+| disableSwiping      | boolean       | Yes       | false   | Whether you want to disable swiping gesture. Use it only in pair with disableDragging.|                         
 
 ## SideMenuView
 

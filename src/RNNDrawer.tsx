@@ -69,6 +69,10 @@ declare interface RNNDrawerOptions {
    * Height of drawer in relation to the screen (0 to 1)
    */
   drawerScreenHeight?: number;
+
+  disableDragging?: boolean;
+
+  disableSwiping?: boolean;
 }
 
 export enum DirectionType {
@@ -103,6 +107,8 @@ interface IProps {
   drawerScreenWidth: number | string;
   drawerScreenHeight: number | string;
   animateDrawerExpanding?: boolean;
+  disableDragging?: boolean;
+  disableSwiping?: boolean;
   style: any;
 }
 
@@ -167,7 +173,9 @@ class RNNDrawer {
         fadeOpacity: 0.6,
         drawerScreenWidth: '80%',
         drawerScreenHeight: '100%',
-        animateDrawerExpanding: true
+        animateDrawerExpanding: true,
+        disableDragging: false,
+        disableSwiping: false
       };
 
       /**
@@ -434,6 +442,8 @@ class RNNDrawer {
               return;
             }
 
+            if (this.props.disableDragging)
+              return;
             // Calculates the translateX / translateY value
             let alignedMovementValue = 0;
             // To swap the direction if needed
@@ -476,6 +486,9 @@ class RNNDrawer {
         this.unsubscribeSwipeEnd = listen(
           'SWIPE_END',
           (swipeDirection: string) => {
+            if (this.props.disableSwiping && !this.startedFromSideMenu)
+              return;
+
             const reverseDirection: DrawerReverseDirectionInterface = {
               right: 'left',
               left: 'right',
@@ -667,3 +680,4 @@ const styles = StyleSheet.create<StylesInterface>({
     backgroundColor: '#000',
   },
 });
+
