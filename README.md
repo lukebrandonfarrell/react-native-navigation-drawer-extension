@@ -102,6 +102,8 @@ props will be passed to your custom drawer component.
 | drawerScreenWidth            | number/string | Yes      | 80%     | Width of drawer on portrait orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300)  |
 | drawerScreenWidthOnLandscape | number/string | Yes      | 30%     | Width of drawer on landscape orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300) |
 | drawerScreenHeight           | number/string | Yes      | 100%    | Height of drawer. Pass a string containing '%' (e.g. "30%") for setting the height in relation to the screen or a number for absolute height (e.g. 300)
+| disableDragging              | boolean       | Yes       | false   | Whether you want to disable dragging of the drawer. Useful if you have ScrollView inside the drawer (addresses #62).|
+| disableSwiping               | boolean       | Yes       | false   | Whether you want to disable swiping gesture. Use it only in pair with disableDragging.  |
 
 ## SideMenuView
 
@@ -152,3 +154,29 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
 | sideMargin          | number        | Yes       | 15      | The size of the gutter for both sides.                                                  |
 | sideMarginLeft      | number        | Yes       |         | The size of the gutter for the left side.                                               |
 | sideMarginRight     | number        | Yes       |         | The size of the gutter for the right side.                                              |   
+
+## Contributors ✨
+  
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+  [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/rodriigovieira"><img src="https://avatars.githubusercontent.com/u/7014073?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rodrigo Vieira</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Arodriigovieira" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Documentation">📖</a> <a href="#maintenance-rodriigovieira" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://discord.gg/QqTN6HqNTG"><img src="https://avatars.githubusercontent.com/u/18139277?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luke Brandon Farrell</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=lukebrandonfarrell" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Alukebrandonfarrell" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=lukebrandonfarrell" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/CursedWizard"><img src="https://avatars.githubusercontent.com/u/67508707?v=4?s=100" width="100px;" alt=""/><br /><sub><b>CyberFuntik</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=CursedWizard" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=CursedWizard" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

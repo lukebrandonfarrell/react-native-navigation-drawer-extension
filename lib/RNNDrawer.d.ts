@@ -49,6 +49,8 @@ declare interface RNNDrawerOptions {
      * for setting the height in relation to the screen or a number for absolute height (e.g. 300)
      */
     drawerScreenHeight?: number | string;
+    disableDragging?: boolean;
+    disableSwiping?: boolean;
 }
 export declare enum DirectionType {
     left = "left",
