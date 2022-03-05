@@ -21,7 +21,7 @@ import { Options } from 'react-native-navigation';
 /* Utils - Project Utilities */
 import RNNDrawer from './RNNDrawer';
 import { listen, dispatch } from './events';
-import { DirectionType } from "./RNNDrawer";
+import { DirectionType } from './RNNDrawer';
 
 const screenHeight: number = Dimensions.get('screen').height;
 

@@ -92,17 +92,18 @@ There's a complete and functional example at the `example` folder, with more tho
 The props below are used to configure the drawer and are to be used in RNN `passProps:`. Any aditional
 props will be passed to your custom drawer component.
 
-| Prop                | Type          | Optional  | Default | Description                                                                             |
-| ------------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------- |
-| animationOpenTime   | float         | Yes       | 300     | Time in milliseconds to execute the drawer opening animation.                           |
-| animationCloseTime  | float         | Yes       | 300     | Time in milliseconds to execute the drawer closing animation.                           |
-| direction           | string        | Yes       | left    | Direction to open the collage, one of: ["left", "right", "top", "bottom"].              |
-| dismissWhenTouchOutside | bool      | Yes       | true    | Should the drawer be dismissed when a click is registered outside?                      |
-| fadeOpacity         | number        | Yes       | 0.6     | Opacity of the screen outside the drawer.                                               |
-| drawerScreenWidth   | number        | Yes       | 0.8     | 0 - 1, width of drawer in relation to the screen.                                       |
-| drawerScreenHeight  | number        | Yes       | 1       | 0 - 1, height of drawer in relation to the screen.                                      |                         
-| disableDragging     | boolean       | Yes       | false   | Whether you want to disable dragging of the drawer. Useful if you have ScrollView inside the drawer (addresses #62).|                         
-| disableSwiping      | boolean       | Yes       | false   | Whether you want to disable swiping gesture. Use it only in pair with disableDragging.|                         
+| Prop                         | Type          | Optional | Default | Description                                                                                                                          |
+| ---------------------------- | ------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| animationOpenTime            | float         | Yes      | 300     | Time in milliseconds to execute the drawer opening animation.                                                                        |
+| animationCloseTime           | float         | Yes      | 300     | Time in milliseconds to execute the drawer closing animation.                                                                        |
+| direction                    | string        | Yes      | left    | Direction to open the collage, one of: ["left", "right", "top", "bottom"].                                                           |
+| dismissWhenTouchOutside      | bool          | Yes      | true    | Should the drawer be dismissed when a click is registered outside?                                                                   |
+| fadeOpacity                  | number        | Yes      | 0.6     | Opacity of the screen outside the drawer.                                                                                            |
+| drawerScreenWidth            | number/string | Yes      | 80%     | Width of drawer on portrait orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300)  |
+| drawerScreenWidthOnLandscape | number/string | Yes      | 30%     | Width of drawer on landscape orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300) |
+| drawerScreenHeight           | number/string | Yes      | 100%    | Height of drawer. Pass a string containing '%' (e.g. "30%") for setting the height in relation to the screen or a number for absolute height (e.g. 300)
+| disableDragging              | boolean       | Yes       | false   | Whether you want to disable dragging of the drawer. Useful if you have ScrollView inside the drawer (addresses #62).|
+| disableSwiping               | boolean       | Yes       | false   | Whether you want to disable swiping gesture. Use it only in pair with disableDragging.  |
 
 ## SideMenuView
 
