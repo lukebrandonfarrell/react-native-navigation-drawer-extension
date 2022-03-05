@@ -95,15 +95,18 @@ There's a complete and functional example at the `example` folder, with more tho
 The props below are used to configure the drawer and are to be used in RNN `passProps:`. Any aditional
 props will be passed to your custom drawer component.
 
-| Prop                | Type          | Optional  | Default | Description                                                                             |
-| ------------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------- |
-| animationOpenTime   | float         | Yes       | 300     | Time in milliseconds to execute the drawer opening animation.                           |
-| animationCloseTime  | float         | Yes       | 300     | Time in milliseconds to execute the drawer closing animation.                           |
-| direction           | string        | Yes       | left    | Direction to open the collage, one of: ["left", "right", "top", "bottom"].              |
-| dismissWhenTouchOutside | bool      | Yes       | true    | Should the drawer be dismissed when a click is registered outside?                      |
-| fadeOpacity         | number        | Yes       | 0.6     | Opacity of the screen outside the drawer.                                               |
-| drawerScreenWidth   | number        | Yes       | 0.8     | 0 - 1, width of drawer in relation to the screen.                                       |
-| drawerScreenHeight  | number        | Yes       | 1       | 0 - 1, height of drawer in relation to the screen.                                      |                         
+| Prop                         | Type          | Optional | Default | Description                                                                                                                          |
+| ---------------------------- | ------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| animationOpenTime            | float         | Yes      | 300     | Time in milliseconds to execute the drawer opening animation.                                                                        |
+| animationCloseTime           | float         | Yes      | 300     | Time in milliseconds to execute the drawer closing animation.                                                                        |
+| direction                    | string        | Yes      | left    | Direction to open the collage, one of: ["left", "right", "top", "bottom"].                                                           |
+| dismissWhenTouchOutside      | bool          | Yes      | true    | Should the drawer be dismissed when a click is registered outside?                                                                   |
+| fadeOpacity                  | number        | Yes      | 0.6     | Opacity of the screen outside the drawer.                                                                                            |
+| drawerScreenWidth            | number/string | Yes      | 80%     | Width of drawer on portrait orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300)  |
+| drawerScreenWidthOnLandscape | number/string | Yes      | 30%     | Width of drawer on landscape orientation. Pass a string containing '%' (e.g. "80%") for setting the width in relation to the screen or a number for absolute width (e.g. 300) |
+| drawerScreenHeight           | number/string | Yes      | 100%    | Height of drawer. Pass a string containing '%' (e.g. "30%") for setting the height in relation to the screen or a number for absolute height (e.g. 300)
+| disableDragging              | boolean       | Yes       | false   | Whether you want to disable dragging of the drawer. Useful if you have ScrollView inside the drawer (addresses #62).|
+| disableSwiping               | boolean       | Yes       | false   | Whether you want to disable swiping gesture. Use it only in pair with disableDragging.  |
 
 ## SideMenuView
 
@@ -156,6 +159,10 @@ import { SideMenuView } from "react-native-navigation-drawer-extension";
 | sideMarginRight     | number        | Yes       |         | The size of the gutter for the right side.                                              |   
 
 ## Contributors ✨
+  
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+  [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -165,6 +172,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Danite"><img src="https://avatars.githubusercontent.com/u/9094825?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniil Merkulov</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=Danite" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=Danite" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/rodriigovieira"><img src="https://avatars.githubusercontent.com/u/7014073?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rodrigo Vieira</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Arodriigovieira" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Documentation">📖</a> <a href="#maintenance-rodriigovieira" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://discord.gg/QqTN6HqNTG"><img src="https://avatars.githubusercontent.com/u/18139277?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luke Brandon Farrell</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=lukebrandonfarrell" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Alukebrandonfarrell" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=lukebrandonfarrell" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/CursedWizard"><img src="https://avatars.githubusercontent.com/u/67508707?v=4?s=100" width="100px;" alt=""/><br /><sub><b>CyberFuntik</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=CursedWizard" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=CursedWizard" title="Documentation">📖</a></td>
   </tr>
 </table>
 
