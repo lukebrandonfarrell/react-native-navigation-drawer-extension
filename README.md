@@ -1,4 +1,7 @@
 <h2 align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img src="https://user-images.githubusercontent.com/7014073/98849326-cca07f80-2431-11eb-82dd-fd2b4e52be44.png?s=300" width="325" /><br/>
   React Native Navigation Drawer Extension
 </h2>
@@ -168,6 +171,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
+    <td align="center"><a href="https://github.com/Danite"><img src="https://avatars.githubusercontent.com/u/9094825?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniil Merkulov</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=Danite" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=Danite" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/rodriigovieira"><img src="https://avatars.githubusercontent.com/u/7014073?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rodrigo Vieira</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Arodriigovieira" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=rodriigovieira" title="Documentation">📖</a> <a href="#maintenance-rodriigovieira" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://discord.gg/QqTN6HqNTG"><img src="https://avatars.githubusercontent.com/u/18139277?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luke Brandon Farrell</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=lukebrandonfarrell" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/issues?q=author%3Alukebrandonfarrell" title="Bug reports">🐛</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=lukebrandonfarrell" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/CursedWizard"><img src="https://avatars.githubusercontent.com/u/67508707?v=4?s=100" width="100px;" alt=""/><br /><sub><b>CyberFuntik</b></sub></a><br /><a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=CursedWizard" title="Code">💻</a> <a href="https://github.com/aspect-apps/react-native-navigation-drawer-extension/commits?author=CursedWizard" title="Documentation">📖</a></td>
