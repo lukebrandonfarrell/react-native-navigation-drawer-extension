@@ -172,7 +172,7 @@ class RNNDrawer {
       private unsubscribeDismissDrawer!: () => void;
       private panningStartedPoint: Point = { moveX: 0, moveY: 0 };
       private startedFromSideMenu: boolean = false;
-      private orientationChangeListener: EmitterSubscription;
+      private orientationChangeListener?: EmitterSubscription;
 
       static defaultProps = {
         animationOpenTime: 300,
@@ -427,7 +427,10 @@ class RNNDrawer {
         const { direction, fadeOpacity } = this.props;
 
         // Adapt the drawer's size on orientation change
-        this.orientationChangeListener = Dimensions.addEventListener('change', this.onOrientationChange);
+        this.orientationChangeListener = Dimensions.addEventListener(
+          'change',
+          this.onOrientationChange,
+        );
 
         // Executes when the side of the screen interaction starts
         this.unsubscribeSwipeStart = listen('SWIPE_START', (value: Point) => {
@@ -564,7 +567,8 @@ class RNNDrawer {
        * Removes all the listenrs from this component
        */
       removeListeners() {
-        if (this.orientationChangeListener) this.orientationChangeListener.remove();
+        if (this.orientationChangeListener)
+          this.orientationChangeListener.remove();
         if (this.unsubscribeSwipeStart) this.unsubscribeSwipeStart();
         if (this.unsubscribeSwipeMove) this.unsubscribeSwipeMove();
         if (this.unsubscribeSwipeEnd) this.unsubscribeSwipeEnd();
